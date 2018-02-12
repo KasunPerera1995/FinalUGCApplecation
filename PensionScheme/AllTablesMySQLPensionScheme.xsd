@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AllTablesMySQLPensionScheme" targetNamespace="http://tempuri.org/AllTablesMySQLPensionScheme.xsd" xmlns:mstns="http://tempuri.org/AllTablesMySQLPensionScheme.xsd" xmlns="http://tempuri.org/AllTablesMySQLPensionScheme.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MySqlConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MySqlConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.PensionScheme.Properties.Settings.GlobalReference.Default.MySqlConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="adminTableAdapter" GeneratorDataComponentClassName="adminTableAdapter" Name="admin" UserDataComponentName="adminTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.admin" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT LoginName, AdminPassword, AccountType FROM admin</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="arrearsTableAdapter" GeneratorDataComponentClassName="arrearsTableAdapter" Name="arrears" UserDataComponentName="arrearsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.arrears" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, OwnerID, PeriodYear, PeriodMonth, Amount, Paid FROM arrears</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="bankTableAdapter" GeneratorDataComponentClassName="bankTableAdapter" Name="bank" UserDataComponentName="bankTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.bank" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT BankID, BankName FROM bank</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="chequeTableAdapter" GeneratorDataComponentClassName="chequeTableAdapter" Name="cheque" UserDataComponentName="chequeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.cheque" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ChequeID, CHEQREC_INSTITUTE, CHEQREC_REFNO, CHEQREC_AMOUNT, CHEQREC_YEAR, CHEQREC_PERIODNO, CHEQREC_STATUS, CHEQREC_DATE FROM cheque</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="complainTableAdapter" GeneratorDataComponentClassName="complainTableAdapter" Name="complain" UserDataComponentName="complainTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.complain" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, Type, OwnerID, Complain, Read FROM complain</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="complaintypeTableAdapter" GeneratorDataComponentClassName="complaintypeTableAdapter" Name="complaintype" UserDataComponentName="complaintypeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.complaintype" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, name FROM complaintype</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="contributionpenTableAdapter" GeneratorDataComponentClassName="contributionpenTableAdapter" Name="contributionpen" UserDataComponentName="contributionpenTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.contributionpen" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ContributionID, University, Year, Month, SubDate, Amount, ReceiptNo, OwnerID FROM contributionpen</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dependentTableAdapter" GeneratorDataComponentClassName="dependentTableAdapter" Name="dependent" UserDataComponentName="dependentTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.dependent" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT DependentID, DependentName, DependentType, RelatedEmployeeID, DependentAge FROM dependent</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dependentpaymentTableAdapter" GeneratorDataComponentClassName="dependentpaymentTableAdapter" Name="dependentpayment" UserDataComponentName="dependentpaymentTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.dependentpayment" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT DependentID, RelatedEmployeeID, DependentType, PeriodYear, PeriodMonth, PaymentValue, Bank, AccountNo FROM dependentpayment</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dependentpaymntsTableAdapter" GeneratorDataComponentClassName="dependentpaymntsTableAdapter" Name="dependentpaymnts" UserDataComponentName="dependentpaymntsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.dependentpaymnts" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT DependentID, EmployeeID, DependentType, Year, Period, PaymentValue, Bank, AccountNo FROM dependentpaymnts</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dependenttypeTableAdapter" GeneratorDataComponentClassName="dependenttypeTableAdapter" Name="dependenttype" UserDataComponentName="dependenttypeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.dependenttype" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT DependentTypeID, DependentType FROM dependenttype</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="employeeTableAdapter" GeneratorDataComponentClassName="employeeTableAdapter" Name="employee" UserDataComponentName="employeeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.employee" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Name, DOB, ServiceStartDate, PensionSchemeRegisteredDate, Type, University, Post, Acadamic, SystemValidity, DependentStatus, TotalContribution, Salary, Pension, Bank, PaymentActNo, BasicSalary, Allowances, Password FROM employee</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="employee typeTableAdapter" GeneratorDataComponentClassName="employee_typeTableAdapter" Name="employee type" UserDataComponentName="employee typeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.employee" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TypeID, Type FROM employee type</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="lumpsumpaymentTableAdapter" GeneratorDataComponentClassName="lumpsumpaymentTableAdapter" Name="lumpsumpayment" UserDataComponentName="lumpsumpaymentTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.lumpsumpayment" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, OwnerID, PaymentValue, PaymentBank, AccountNo, SubDate, VoucherNo, Type FROM lumpsumpayment</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="paymentupdateTableAdapter" GeneratorDataComponentClassName="paymentupdateTableAdapter" Name="paymentupdate" UserDataComponentName="paymentupdateTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.paymentupdate" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT PaymentType, LastUpdatedPayYr, LastUpdatedPayMnth, Voucher FROM paymentupdate</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="pensionerTableAdapter" GeneratorDataComponentClassName="pensionerTableAdapter" Name="pensioner" UserDataComponentName="pensionerTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.pensioner" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT EmployeID, Addition, FinalReserve, PensionRate, Pension FROM pensioner</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="pensionpaymentTableAdapter" GeneratorDataComponentClassName="pensionpaymentTableAdapter" Name="pensionpayment" UserDataComponentName="pensionpaymentTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.pensionpayment" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT PaymentID, OwnerID, PaymentValue, Approval, PaymentMonth, PaymentYear, PaymentBank, AccountNo, PaymentSubDate, VoucherNo, Type FROM pensionpayment</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="postTableAdapter" GeneratorDataComponentClassName="postTableAdapter" Name="post" UserDataComponentName="postTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.post" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT PostID, PostName, Academic FROM post</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ratesTableAdapter" GeneratorDataComponentClassName="ratesTableAdapter" Name="rates" UserDataComponentName="ratesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.rates" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, Name, Rate FROM rates</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="statusTableAdapter" GeneratorDataComponentClassName="statusTableAdapter" Name="status" UserDataComponentName="statusTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.status" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT StatusID, Name FROM status</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sysdiagramsTableAdapter" GeneratorDataComponentClassName="sysdiagramsTableAdapter" Name="sysdiagrams" UserDataComponentName="sysdiagramsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.sysdiagrams" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT name, principal_id, diagram_id, version, definition FROM sysdiagrams</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="universityTableAdapter" GeneratorDataComponentClassName="universityTableAdapter" Name="university" UserDataComponentName="universityTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.university" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT UniversityID, UniversityName FROM university</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="updatedbTableAdapter" GeneratorDataComponentClassName="updatedbTableAdapter" Name="updatedb" UserDataComponentName="updatedbTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.updatedb" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT University, LastConYr, LastConMnth FROM updatedb</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="updatedbnTableAdapter" GeneratorDataComponentClassName="updatedbnTableAdapter" Name="updatedbn" UserDataComponentName="updatedbnTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MySqlConnectionString (Settings)" DbObjectName="pensionscheme.updatedbn" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT University, LastCOnYr, LastConMnth FROM updatedbn</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AllTablesMySQLPensionScheme" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="AllTablesMySQLPensionScheme" msprop:Generator_UserDSName="AllTablesMySQLPensionScheme">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="admin" msprop:Generator_TableClassName="adminDataTable" msprop:Generator_TableVarName="tableadmin" msprop:Generator_TablePropName="admin" msprop:Generator_RowDeletingName="adminRowDeleting" msprop:Generator_RowChangingName="adminRowChanging" msprop:Generator_RowEvHandlerName="adminRowChangeEventHandler" msprop:Generator_RowDeletedName="adminRowDeleted" msprop:Generator_UserTableName="admin" msprop:Generator_RowChangedName="adminRowChanged" msprop:Generator_RowEvArgName="adminRowChangeEvent" msprop:Generator_RowClassName="adminRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="arrears" msprop:Generator_TableClassName="arrearsDataTable" msprop:Generator_TableVarName="tablearrears" msprop:Generator_TablePropName="arrears" msprop:Generator_RowDeletingName="arrearsRowDeleting" msprop:Generator_RowChangingName="arrearsRowChanging" msprop:Generator_RowEvHandlerName="arrearsRowChangeEventHandler" msprop:Generator_RowDeletedName="arrearsRowDeleted" msprop:Generator_UserTableName="arrears" msprop:Generator_RowChangedName="arrearsRowChanged" msprop:Generator_RowEvArgName="arrearsRowChangeEvent" msprop:Generator_RowClassName="arrearsRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="bank" msprop:Generator_TableClassName="bankDataTable" msprop:Generator_TableVarName="tablebank" msprop:Generator_TablePropName="bank" msprop:Generator_RowDeletingName="bankRowDeleting" msprop:Generator_RowChangingName="bankRowChanging" msprop:Generator_RowEvHandlerName="bankRowChangeEventHandler" msprop:Generator_RowDeletedName="bankRowDeleted" msprop:Generator_UserTableName="bank" msprop:Generator_RowChangedName="bankRowChanged" msprop:Generator_RowEvArgName="bankRowChangeEvent" msprop:Generator_RowClassName="bankRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="cheque" msprop:Generator_TableClassName="chequeDataTable" msprop:Generator_TableVarName="tablecheque" msprop:Generator_TablePropName="cheque" msprop:Generator_RowDeletingName="chequeRowDeleting" msprop:Generator_RowChangingName="chequeRowChanging" msprop:Generator_RowEvHandlerName="chequeRowChangeEventHandler" msprop:Generator_RowDeletedName="chequeRowDeleted" msprop:Generator_UserTableName="cheque" msprop:Generator_RowChangedName="chequeRowChanged" msprop:Generator_RowEvArgName="chequeRowChangeEvent" msprop:Generator_RowClassName="chequeRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="complain" msprop:Generator_TableClassName="complainDataTable" msprop:Generator_TableVarName="tablecomplain" msprop:Generator_TablePropName="complain" msprop:Generator_RowDeletingName="complainRowDeleting" msprop:Generator_RowChangingName="complainRowChanging" msprop:Generator_RowEvHandlerName="complainRowChangeEventHandler" msprop:Generator_RowDeletedName="complainRowDeleted" msprop:Generator_UserTableName="complain" msprop:Generator_RowChangedName="complainRowChanged" msprop:Generator_RowEvArgName="complainRowChangeEvent" msprop:Generator_RowClassName="complainRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="complaintype" msprop:Generator_TableClassName="complaintypeDataTable" msprop:Generator_TableVarName="tablecomplaintype" msprop:Generator_TablePropName="complaintype" msprop:Generator_RowDeletingName="complaintypeRowDeleting" msprop:Generator_RowChangingName="complaintypeRowChanging" msprop:Generator_RowEvHandlerName="complaintypeRowChangeEventHandler" msprop:Generator_RowDeletedName="complaintypeRowDeleted" msprop:Generator_UserTableName="complaintype" msprop:Generator_RowChangedName="complaintypeRowChanged" msprop:Generator_RowEvArgName="complaintypeRowChangeEvent" msprop:Generator_RowClassName="complaintypeRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="contributionpen" msprop:Generator_TableClassName="contributionpenDataTable" msprop:Generator_TableVarName="tablecontributionpen" msprop:Generator_TablePropName="contributionpen" msprop:Generator_RowDeletingName="contributionpenRowDeleting" msprop:Generator_RowChangingName="contributionpenRowChanging" msprop:Generator_RowEvHandlerName="contributionpenRowChangeEventHandler" msprop:Generator_RowDeletedName="contributionpenRowDeleted" msprop:Generator_UserTableName="contributionpen" msprop:Generator_RowChangedName="contributionpenRowChanged" msprop:Generator_RowEvArgName="contributionpenRowChangeEvent" msprop:Generator_RowClassName="contributionpenRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dependent" msprop:Generator_TableClassName="dependentDataTable" msprop:Generator_TableVarName="tabledependent" msprop:Generator_TablePropName="dependent" msprop:Generator_RowDeletingName="dependentRowDeleting" msprop:Generator_RowChangingName="dependentRowChanging" msprop:Generator_RowEvHandlerName="dependentRowChangeEventHandler" msprop:Generator_RowDeletedName="dependentRowDeleted" msprop:Generator_UserTableName="dependent" msprop:Generator_RowChangedName="dependentRowChanged" msprop:Generator_RowEvArgName="dependentRowChangeEvent" msprop:Generator_RowClassName="dependentRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dependentpayment" msprop:Generator_TableClassName="dependentpaymentDataTable" msprop:Generator_TableVarName="tabledependentpayment" msprop:Generator_TablePropName="dependentpayment" msprop:Generator_RowDeletingName="dependentpaymentRowDeleting" msprop:Generator_RowChangingName="dependentpaymentRowChanging" msprop:Generator_RowEvHandlerName="dependentpaymentRowChangeEventHandler" msprop:Generator_RowDeletedName="dependentpaymentRowDeleted" msprop:Generator_UserTableName="dependentpayment" msprop:Generator_RowChangedName="dependentpaymentRowChanged" msprop:Generator_RowEvArgName="dependentpaymentRowChangeEvent" msprop:Generator_RowClassName="dependentpaymentRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dependentpaymnts" msprop:Generator_TableClassName="dependentpaymntsDataTable" msprop:Generator_TableVarName="tabledependentpaymnts" msprop:Generator_TablePropName="dependentpaymnts" msprop:Generator_RowDeletingName="dependentpaymntsRowDeleting" msprop:Generator_RowChangingName="dependentpaymntsRowChanging" msprop:Generator_RowEvHandlerName="dependentpaymntsRowChangeEventHandler" msprop:Generator_RowDeletedName="dependentpaymntsRowDeleted" msprop:Generator_UserTableName="dependentpaymnts" msprop:Generator_RowChangedName="dependentpaymntsRowChanged" msprop:Generator_RowEvArgName="dependentpaymntsRowChangeEvent" msprop:Generator_RowClassName="dependentpaymntsRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dependenttype" msprop:Generator_TableClassName="dependenttypeDataTable" msprop:Generator_TableVarName="tabledependenttype" msprop:Generator_TablePropName="dependenttype" msprop:Generator_RowDeletingName="dependenttypeRowDeleting" msprop:Generator_RowChangingName="dependenttypeRowChanging" msprop:Generator_RowEvHandlerName="dependenttypeRowChangeEventHandler" msprop:Generator_RowDeletedName="dependenttypeRowDeleted" msprop:Generator_UserTableName="dependenttype" msprop:Generator_RowChangedName="dependenttypeRowChanged" msprop:Generator_RowEvArgName="dependenttypeRowChangeEvent" msprop:Generator_RowClassName="dependenttypeRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="employee" msprop:Generator_TableClassName="employeeDataTable" msprop:Generator_TableVarName="tableemployee" msprop:Generator_TablePropName="employee" msprop:Generator_RowDeletingName="employeeRowDeleting" msprop:Generator_RowChangingName="employeeRowChanging" msprop:Generator_RowEvHandlerName="employeeRowChangeEventHandler" msprop:Generator_RowDeletedName="employeeRowDeleted" msprop:Generator_UserTableName="employee" msprop:Generator_RowChangedName="employeeRowChanged" msprop:Generator_RowEvArgName="employeeRowChangeEvent" msprop:Generator_RowClassName="employeeRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="employee_x0020_type" msprop:Generator_TableClassName="employee_typeDataTable" msprop:Generator_TableVarName="tableemployee_type" msprop:Generator_TablePropName="employee_type" msprop:Generator_RowDeletingName="employee_typeRowDeleting" msprop:Generator_RowChangingName="employee_typeRowChanging" msprop:Generator_RowEvHandlerName="employee_typeRowChangeEventHandler" msprop:Generator_RowDeletedName="employee_typeRowDeleted" msprop:Generator_UserTableName="employee type" msprop:Generator_RowChangedName="employee_typeRowChanged" msprop:Generator_RowEvArgName="employee_typeRowChangeEvent" msprop:Generator_RowClassName="employee_typeRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="lumpsumpayment" msprop:Generator_TableClassName="lumpsumpaymentDataTable" msprop:Generator_TableVarName="tablelumpsumpayment" msprop:Generator_TablePropName="lumpsumpayment" msprop:Generator_RowDeletingName="lumpsumpaymentRowDeleting" msprop:Generator_RowChangingName="lumpsumpaymentRowChanging" msprop:Generator_RowEvHandlerName="lumpsumpaymentRowChangeEventHandler" msprop:Generator_RowDeletedName="lumpsumpaymentRowDeleted" msprop:Generator_UserTableName="lumpsumpayment" msprop:Generator_RowChangedName="lumpsumpaymentRowChanged" msprop:Generator_RowEvArgName="lumpsumpaymentRowChangeEvent" msprop:Generator_RowClassName="lumpsumpaymentRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="paymentupdate" msprop:Generator_TableClassName="paymentupdateDataTable" msprop:Generator_TableVarName="tablepaymentupdate" msprop:Generator_TablePropName="paymentupdate" msprop:Generator_RowDeletingName="paymentupdateRowDeleting" msprop:Generator_RowChangingName="paymentupdateRowChanging" msprop:Generator_RowEvHandlerName="paymentupdateRowChangeEventHandler" msprop:Generator_RowDeletedName="paymentupdateRowDeleted" msprop:Generator_UserTableName="paymentupdate" msprop:Generator_RowChangedName="paymentupdateRowChanged" msprop:Generator_RowEvArgName="paymentupdateRowChangeEvent" msprop:Generator_RowClassName="paymentupdateRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pensioner" msprop:Generator_TableClassName="pensionerDataTable" msprop:Generator_TableVarName="tablepensioner" msprop:Generator_TablePropName="pensioner" msprop:Generator_RowDeletingName="pensionerRowDeleting" msprop:Generator_RowChangingName="pensionerRowChanging" msprop:Generator_RowEvHandlerName="pensionerRowChangeEventHandler" msprop:Generator_RowDeletedName="pensionerRowDeleted" msprop:Generator_UserTableName="pensioner" msprop:Generator_RowChangedName="pensionerRowChanged" msprop:Generator_RowEvArgName="pensionerRowChangeEvent" msprop:Generator_RowClassName="pensionerRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pensionpayment" msprop:Generator_TableClassName="pensionpaymentDataTable" msprop:Generator_TableVarName="tablepensionpayment" msprop:Generator_TablePropName="pensionpayment" msprop:Generator_RowDeletingName="pensionpaymentRowDeleting" msprop:Generator_RowChangingName="pensionpaymentRowChanging" msprop:Generator_RowEvHandlerName="pensionpaymentRowChangeEventHandler" msprop:Generator_RowDeletedName="pensionpaymentRowDeleted" msprop:Generator_UserTableName="pensionpayment" msprop:Generator_RowChangedName="pensionpaymentRowChanged" msprop:Generator_RowEvArgName="pensionpaymentRowChangeEvent" msprop:Generator_RowClassName="pensionpaymentRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="post" msprop:Generator_TableClassName="postDataTable" msprop:Generator_TableVarName="tablepost" msprop:Generator_TablePropName="post" msprop:Generator_RowDeletingName="postRowDeleting" msprop:Generator_RowChangingName="postRowChanging" msprop:Generator_RowEvHandlerName="postRowChangeEventHandler" msprop:Generator_RowDeletedName="postRowDeleted" msprop:Generator_UserTableName="post" msprop:Generator_RowChangedName="postRowChanged" msprop:Generator_RowEvArgName="postRowChangeEvent" msprop:Generator_RowClassName="postRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rates" msprop:Generator_TableClassName="ratesDataTable" msprop:Generator_TableVarName="tablerates" msprop:Generator_TablePropName="rates" msprop:Generator_RowDeletingName="ratesRowDeleting" msprop:Generator_RowChangingName="ratesRowChanging" msprop:Generator_RowEvHandlerName="ratesRowChangeEventHandler" msprop:Generator_RowDeletedName="ratesRowDeleted" msprop:Generator_UserTableName="rates" msprop:Generator_RowChangedName="ratesRowChanged" msprop:Generator_RowEvArgName="ratesRowChangeEvent" msprop:Generator_RowClassName="ratesRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="status" msprop:Generator_TableClassName="statusDataTable" msprop:Generator_TableVarName="tablestatus" msprop:Generator_TablePropName="status" msprop:Generator_RowDeletingName="statusRowDeleting" msprop:Generator_RowChangingName="statusRowChanging" msprop:Generator_RowEvHandlerName="statusRowChangeEventHandler" msprop:Generator_RowDeletedName="statusRowDeleted" msprop:Generator_UserTableName="status" msprop:Generator_RowChangedName="statusRowChanged" msprop:Generator_RowEvArgName="statusRowChangeEvent" msprop:Generator_RowClassName="statusRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sysdiagrams" msprop:Generator_TableClassName="sysdiagramsDataTable" msprop:Generator_TableVarName="tablesysdiagrams" msprop:Generator_TablePropName="sysdiagrams" msprop:Generator_RowDeletingName="sysdiagramsRowDeleting" msprop:Generator_RowChangingName="sysdiagramsRowChanging" msprop:Generator_RowEvHandlerName="sysdiagramsRowChangeEventHandler" msprop:Generator_RowDeletedName="sysdiagramsRowDeleted" msprop:Generator_UserTableName="sysdiagrams" msprop:Generator_RowChangedName="sysdiagramsRowChanged" msprop:Generator_RowEvArgName="sysdiagramsRowChangeEvent" msprop:Generator_RowClassName="sysdiagramsRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="university" msprop:Generator_TableClassName="universityDataTable" msprop:Generator_TableVarName="tableuniversity" msprop:Generator_TablePropName="university" msprop:Generator_RowDeletingName="universityRowDeleting" msprop:Generator_RowChangingName="universityRowChanging" msprop:Generator_RowEvHandlerName="universityRowChangeEventHandler" msprop:Generator_RowDeletedName="universityRowDeleted" msprop:Generator_UserTableName="university" msprop:Generator_RowChangedName="universityRowChanged" msprop:Generator_RowEvArgName="universityRowChangeEvent" msprop:Generator_RowClassName="universityRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="updatedb" msprop:Generator_TableClassName="updatedbDataTable" msprop:Generator_TableVarName="tableupdatedb" msprop:Generator_TablePropName="updatedb" msprop:Generator_RowDeletingName="updatedbRowDeleting" msprop:Generator_RowChangingName="updatedbRowChanging" msprop:Generator_RowEvHandlerName="updatedbRowChangeEventHandler" msprop:Generator_RowDeletedName="updatedbRowDeleted" msprop:Generator_UserTableName="updatedb" msprop:Generator_RowChangedName="updatedbRowChanged" msprop:Generator_RowEvArgName="updatedbRowChangeEvent" msprop:Generator_RowClassName="updatedbRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="updatedbn" msprop:Generator_TableClassName="updatedbnDataTable" msprop:Generator_TableVarName="tableupdatedbn" msprop:Generator_TablePropName="updatedbn" msprop:Generator_RowDeletingName="updatedbnRowDeleting" msprop:Generator_RowChangingName="updatedbnRowChanging" msprop:Generator_RowEvHandlerName="updatedbnRowChangeEventHandler" msprop:Generator_RowDeletedName="updatedbnRowDeleted" msprop:Generator_UserTableName="updatedbn" msprop:Generator_RowChangedName="updatedbnRowChanged" msprop:Generator_RowEvArgName="updatedbnRowChangeEvent" msprop:Generator_RowClassName="updatedbnRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="voucher">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

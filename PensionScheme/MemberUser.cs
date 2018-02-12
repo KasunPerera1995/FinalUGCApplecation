@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data;
+namespace PensionScheme
+{
+    class MemberUser
+    {
+        private string nic;
+        private string name;
+        private DateTime dob;
+        private DateTime serviceStartDate;
+        private DateTime pensionSchemeRegisteredDate;
+        private int type;
+        private int university;
+        private int post;
+        private bool acadamic;
+        private bool systemValidity;
+        private int dependentStatus;
+        private double totalContribution;
+        private double salary;
+        private double pension;
+        private int bank;
+        private string paymentActNo;
+        private double basicSalary;
+        private double allowances;
+        private string password;
+        private DateTime retirementDate;
+        private string email;
+
+        public MemberUser() {
+        }
+
+        public MemberUser(string nic, string name, DateTime dob, DateTime serviceStartDate, DateTime pensionSchemeRegisteredDate, int university, int post, bool acadamic, double salary, int bank, string paymentActNo, double basicSalary, double allowances, string email)
+        {
+            this.nic = nic;
+            this.name = name;
+            this.dob = dob;
+            this.serviceStartDate = serviceStartDate;
+            this.pensionSchemeRegisteredDate = pensionSchemeRegisteredDate;
+            this.university = university;
+            this.post = post;
+            this.acadamic = acadamic;
+            this.salary = salary;
+            this.bank = bank;
+            this.paymentActNo = paymentActNo;
+            this.basicSalary = basicSalary;
+            this.allowances = allowances;
+            this.email = email;
+        }
+
+        public MemberUser(string nic, string name, DateTime dob, DateTime serviceStartDate, DateTime pensionSchemeRegisteredDate, int type, int university, int post, bool acadamic, bool systemValidity, int dependentStatus, double totalContribution, double salary, double pension, int bank, string paymentActNo, double basicSalary, double allowances,  string email)
+        {
+            
+                this.nic = nic;
+                this.name = name;
+                this.dob = dob;
+                this.serviceStartDate = serviceStartDate;
+                this.pensionSchemeRegisteredDate = pensionSchemeRegisteredDate;
+                this.type = type;
+                this.university = university;
+                this.post = post;
+                this.acadamic = acadamic;
+                this.systemValidity = systemValidity;
+                this.dependentStatus = dependentStatus;
+                this.totalContribution = totalContribution;
+                this.salary = salary;
+                this.pension = pension;
+                this.bank = bank;
+                this.paymentActNo = paymentActNo;
+                this.basicSalary = basicSalary;
+                this.allowances = allowances;
+                //this.retirementDate = retirementDate;
+                this.email = email;
+            
+            }
+        public MemberUser(DataGridViewRow r) {
+            this.nic = r.Cells[0].Value.ToString();
+            this.name = r.Cells[1].Value.ToString();
+            this.dob = Convert.ToDateTime(r.Cells[2].Value.ToString());
+            this.serviceStartDate = Convert.ToDateTime(r.Cells[3].Value.ToString());
+            this.pensionSchemeRegisteredDate = Convert.ToDateTime(r.Cells[4].Value.ToString());
+            this.type = Convert.ToInt32(r.Cells[5].Value.ToString());
+            this.university = Convert.ToInt32(r.Cells[6].Value.ToString());
+            this.post = Convert.ToInt32(r.Cells[7].Value.ToString());
+            this.acadamic = Convert.ToBoolean(r.Cells[8].Value.ToString());
+            this.systemValidity = Convert.ToBoolean(r.Cells[9].Value.ToString());
+            this.dependentStatus = Convert.ToInt32(r.Cells[10].Value.ToString());
+            this.totalContribution = Convert.ToDouble(r.Cells[11].Value.ToString());
+            this.salary = Convert.ToDouble(r.Cells[12].Value.ToString());
+            this.pension = Convert.ToDouble(r.Cells[13].Value.ToString());
+            this.bank = Convert.ToInt32(r.Cells[14].Value.ToString());
+            this.paymentActNo = r.Cells[15].Value.ToString();
+            this.basicSalary = Convert.ToDouble(r.Cells[16].Value.ToString());
+            this.allowances = Convert.ToDouble(r.Cells[17].Value.ToString());
+            if(!(String.IsNullOrEmpty(r.Cells[18].Value.ToString())))
+           this.retirementDate = Convert.ToDateTime(r.Cells[18].Value.ToString());
+            this.email = r.Cells[19].Value.ToString();
+
+        }
+
+        public string Nic { get => nic; set => nic = value; }
+        public string Name { get => name; set => name = value; }
+        public DateTime Dob { get => dob; set => dob = value; }
+        public DateTime ServiceStartDate { get => serviceStartDate; set => serviceStartDate = value; }
+        public DateTime PensionSchemeRegisteredDate { get => pensionSchemeRegisteredDate; set => pensionSchemeRegisteredDate = value; }
+        public int Type { get => type; set => type = value; }
+        public int University { get => university; set => university = value; }
+        public int Post { get => post; set => post = value; }
+        public bool Acadamic { get => acadamic; set => acadamic = value; }
+        public bool SystemValidity { get => systemValidity; set => systemValidity = value; }
+        public int DependentStatus { get => dependentStatus; set => dependentStatus = value; }
+        public double TotalContribution { get => totalContribution; set => totalContribution = value; }
+        public double Salary { get => salary; set => salary = value; }
+        public double Pension { get => pension; set => pension = value; }
+        public int Bank { get => bank; set => bank = value; }
+        public string PaymentActNo { get => paymentActNo; set => paymentActNo = value; }
+        public double BasicSalary { get => basicSalary; set => basicSalary = value; }
+        public double Allowances { get => allowances; set => allowances = value; }
+        public string Password { get => password; set => password = value; }
+        public DateTime RetirementDate { get => retirementDate; set => retirementDate = value; }
+        public string Email { get => email; set => email = value; }
+
+
+
+    }
+}

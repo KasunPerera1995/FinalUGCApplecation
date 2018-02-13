@@ -15,55 +15,11 @@ namespace PensionScheme
 {
     public partial class Payment : Form
     {
+        MemberBUO mem = new MemberBUO();
+        PaymentBUO pb = new PaymentBUO();
         Boolean val = true;
 
-        public void EditNotification()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                MySqlDataAdapter sql = new MySqlDataAdapter("Select * from Employee where ID='" + listView1.SelectedItems[0].Text.ToString() + "'", conn);
-                sql.Fill(dt);
-
-                int u, p, d, t, b;
-
-                u = Convert.ToInt32(dt.Rows[0][6].ToString());
-                p = Convert.ToInt32(dt.Rows[0][7].ToString());
-                d = Convert.ToInt32(dt.Rows[0][10].ToString());
-                t = Convert.ToInt32(dt.Rows[0][5].ToString());
-                b = Convert.ToInt32(dt.Rows[0][14].ToString());
-                Member mb = new Member(u, p, d, t, b);
-                mb.textBox1.Text = dt.Rows[0][0].ToString();  //Cells[0].Value.ToString();
-                mb.textBox2.Text = dt.Rows[0][1].ToString();
-                // mb.UniversitySelect.SelectedValue= dt.Rows[0][6].ToString();//mb.textBox3.Text = dt.Rows[0][6].ToString();
-                mb.textBox4.Text = (Convert.ToDateTime(dt.Rows[0][2].ToString())).ToString("yyyy-MM-dd"); //dt.Rows[0][2].ToString();
-                mb.textBox5.Text = dt.Rows[0][13].ToString();
-                mb.textBox6.Text = dt.Rows[0][15].ToString();                                  //this.dt.CurrentRow.Cells[15].Value.ToString();
-                                                                                              //   mb.textBox7.Text = dt.Rows[0][14].ToString();//this.dt.CurrentRow.Cells[14].Value.ToString();
-                                                                                             //mb.PostSelect.SelectedValue = dt.Rows[0][7].ToString(); //this.dt.CurrentRow.Cells[7].Value.ToString();
-                mb.AcadamicC.SelectedItem= dt.Rows[0][8].ToString();                        //this.dt.CurrentRow.Cells[8].Value.ToString();mb.textBox9.Text = dt.Rows[0][8].ToString();
-                                                                                           // mb.DependentStatus.SelectedValue = dt.Rows[0][10].ToString(); //this.dt.CurrentRow.Cells[10].Value.ToString();
-                mb.textBox11.Text = dt.Rows[0][12].ToString();                            //this.dt.CurrentRow.Cells[12].Value.ToString();
-                mb.textBox12.Text = dt.Rows[0][11].ToString();                           //this.dt.CurrentRow.Cells[11].Value.ToString();
-                mb.textBox13.Text = (Convert.ToDateTime(dt.Rows[0][3].ToString())).ToString("yyyy-MM-dd");//dt.Rows[0][3].ToString(); //this.dt.CurrentRow.Cells[3].Value.ToString();
-                mb.textBox14.Text = (Convert.ToDateTime(dt.Rows[0][4].ToString())).ToString("yyyy-MM-dd");
-                mb.ValidityC.SelectedItem= dt.Rows[0][9].ToString();                          // this.dt.CurrentRow.Cells[9].Value.ToString();mb.textBox15.Text = dt.Rows[0][9].ToString(); 
-                                                                                              //mb.TypeSelect.SelectedValue = dt.Rows[0][5].ToString(); //this.dt.CurrentRow.Cells[5].Value.ToString();
-                mb.textBox18.Text = dt.Rows[0][16].ToString();                                   //this.dt.CurrentRow.Cells[16].Value.ToString();
-                mb.textBox19.Text = dt.Rows[0][17].ToString();                                //this.dt.CurrentRow.Cells[17].Value.ToString();
-                mb.Email.Text = dt.Rows[0][20].ToString();
-                mb.Show();
-                mb.SelectedValues();
-                mb.TotalReserve();
-                mb.RetDateMethod();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-
-            }
-        }
+       
         public void Notifications()
         {
             try
@@ -135,7 +91,17 @@ namespace PensionScheme
         public Payment()
         {
             InitializeComponent();
-            Notifications();
+            pb.Notifications(listView1);
+            if (listView1.Items.Count > 0)
+            {
+
+                notificationP.Icon = SystemIcons.Information;
+                notificationP.BalloonTipTitle = "Alert";
+                notificationP.BalloonTipText = "You have " + listView1.Items.Count.ToString() + " Notifications";
+
+                notificationP.ShowBalloonTip(1000);
+            }
+            // Notifications();
             timer1.Start();
             // PaymentReview();
         }
@@ -219,7 +185,9 @@ namespace PensionScheme
         private void SelectNotification(object sender, MouseEventArgs e)
         {
             MessageBox.Show(listView1.SelectedItems[0].Text.ToString());
-            EditNotification();
+
+            MemberUser mu = mem.SearchByID(listView1.SelectedItems[0].Text.ToString());
+            mem.MemberFormOpen(mu);
         }
 
         private void Dependent_Click(object sender, EventArgs e)
@@ -246,7 +214,17 @@ namespace PensionScheme
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            Notifications();
+            pb.Notifications(listView1);
+            if (listView1.Items.Count > 0)
+            {
+                
+                notificationP.Icon=SystemIcons.Information;
+                notificationP.BalloonTipTitle = "Alert";
+                notificationP.BalloonTipText = "You have " + listView1.Items.Count.ToString() + " Notifications";
+
+                notificationP.ShowBalloonTip(1000);
+            }
+            //Notifications();
         }
 
         private void Payment_FormClosed(object sender, FormClosedEventArgs e)

@@ -42,6 +42,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.Logout = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.notificationP = new System.Windows.Forms.NotifyIcon(this.components);
             this.tabControl1.SuspendLayout();
             this.PaymentDetails.SuspendLayout();
             this.SuspendLayout();
@@ -92,7 +93,7 @@
             // 
             this.Time.AutoSize = true;
             this.Time.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Time.Location = new System.Drawing.Point(717, 3);
+            this.Time.Location = new System.Drawing.Point(686, 3);
             this.Time.Name = "Time";
             this.Time.Size = new System.Drawing.Size(41, 18);
             this.Time.TabIndex = 14;
@@ -191,6 +192,12 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // notificationP
+            // 
+            this.notificationP.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notificationP.Text = "notifyIcon1";
+            this.notificationP.Visible = true;
+            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,5 +231,6 @@
         private System.Windows.Forms.Label Time;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button Refresh;
+        private System.Windows.Forms.NotifyIcon notificationP;
     }
 }

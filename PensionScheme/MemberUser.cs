@@ -101,6 +101,40 @@ namespace PensionScheme
             this.email = r.Cells[19].Value.ToString();
 
         }
+        public MemberUser(DataTable r) {
+            if (r.Rows.Count <= 0) {
+                MessageBox.Show("Member Removed");
+                return;
+
+
+            }
+                
+            this.nic = r.Rows[0][0].ToString();
+            this.name = r.Rows[0][1].ToString();
+            this.dob = Convert.ToDateTime(r.Rows[0][2].ToString());
+            this.serviceStartDate = Convert.ToDateTime(r.Rows[0][3].ToString());
+            this.pensionSchemeRegisteredDate = Convert.ToDateTime(r.Rows[0][4].ToString());
+            this.type = Convert.ToInt32(r.Rows[0][5].ToString());
+            this.university = Convert.ToInt32(r.Rows[0][6].ToString());
+            this.post = Convert.ToInt32(r.Rows[0][7].ToString());
+            this.acadamic = Convert.ToBoolean(r.Rows[0][8].ToString());
+            this.systemValidity = Convert.ToBoolean(r.Rows[0][9].ToString());
+            this.dependentStatus = Convert.ToInt32(r.Rows[0][10].ToString());
+            this.totalContribution = Convert.ToDouble(r.Rows[0][11].ToString());
+            this.salary = Convert.ToDouble(r.Rows[0][12].ToString());
+            this.pension = Convert.ToDouble(r.Rows[0][13].ToString());
+            this.bank = Convert.ToInt32(r.Rows[0][14].ToString());
+            this.paymentActNo = r.Rows[0][15].ToString();
+            this.basicSalary = Convert.ToDouble(r.Rows[0][16].ToString());
+            this.allowances = Convert.ToDouble(r.Rows[0][17].ToString());
+            if (!(String.IsNullOrEmpty(r.Rows[0][18].ToString())))
+                this.retirementDate = Convert.ToDateTime(r.Rows[0][18].ToString());
+            this.email = r.Rows[0][19].ToString();
+
+
+
+
+        }
 
         public string Nic { get => nic; set => nic = value; }
         public string Name { get => name; set => name = value; }

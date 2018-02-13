@@ -147,6 +147,8 @@
     <Compile Include="NotificationReview.Designer.cs">
       <DependentUpon>NotificationReview.cs</DependentUpon>
     </Compile>
+    <Compile Include="PaymentBUO.cs" />
+    <Compile Include="PaymentDAO.cs" />
     <Compile Include="PaymentVO.cs" />
     <Compile Include="PensionerUser.cs" />
     <Compile Include="PensionPayment.cs">

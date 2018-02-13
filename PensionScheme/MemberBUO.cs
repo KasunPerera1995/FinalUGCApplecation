@@ -131,6 +131,10 @@ namespace PensionScheme
         }
         public void MemberFormOpen(MemberUser mu)
         {
+            if (String.IsNullOrEmpty(mu.Nic)) {
+                MessageBox.Show("Member Removed");
+                return;
+            }
 
             int u, p, d, t, b;
             u = mu.University;
@@ -429,6 +433,13 @@ namespace PensionScheme
                 MessageBox.Show(ee.ToString());
                 return false;
             }
+        }
+
+        public MemberUser SearchByID(string id) {
+            DataTable dt=mem.FilterMember("ID", id);
+            MemberUser mb = new MemberUser(dt);
+            return mb;
+
         }
     }
 }

@@ -15,9 +15,6 @@ using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 
 
-//Starting
-//start 2
-
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form

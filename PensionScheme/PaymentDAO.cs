@@ -17,7 +17,8 @@ namespace PensionScheme
         public DataTable NumberofNotificationsinPeriod(int lYr, int lMnth, int uYr, int uMnth) {
             try
             {
-                string query = String.Format("select p.OwnerID, count(p.Approval) as Approvals from PensionScheme.PensionPayment p where p.Approval = 0 And((p.PaymentMonth >= @lMnth AND p.PaymentYear < @uYr AND p.PaymentYear=@lYr) OR (p.PaymentMonth < @uMnth AND p.PaymentYear > @lYr AND p.PaymentYear=@uYr) OR (p.PaymentMonth >= @lMnth AND p.PaymentYear = @uYr AND p.PaymentYear=@lYr AND p.PaymentMonth<@uMnth) OR (p.PaymentYear>@lYr AND p.PaymentMonth<@uYr)   ) group by p.OwnerID");
+                
+                string query = String.Format("select p.OwnerID, count(p.Approval) as Approvals from PensionPayment p where p.Approval = 0 And((p.PaymentMonth >= @lMnth AND p.PaymentYear < @uYr AND p.PaymentYear=@lYr) OR (p.PaymentMonth < @uMnth AND p.PaymentYear > @lYr AND p.PaymentYear=@uYr) OR (p.PaymentMonth >= @lMnth AND p.PaymentYear = @uYr AND p.PaymentYear=@lYr AND p.PaymentMonth<@uMnth) OR (p.PaymentYear>@lYr AND p.PaymentYear<@uYr)   ) group by p.OwnerID");
                 MySqlParameter[] mySqlParameters = new MySqlParameter[4];
                 mySqlParameters[0] = new MySqlParameter("@lYr", lYr);
                 mySqlParameters[1] = new MySqlParameter("@lMnth", lMnth);

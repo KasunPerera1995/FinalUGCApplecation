@@ -39,13 +39,13 @@ namespace PensionScheme
                 MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
                 if (cMnth != 2)
                 {
-                    MySqlDataAdapter sql = new MySqlDataAdapter("select p.OwnerID,count(p.Approval) as Approvals from PensionScheme.PensionPayment p where p.Approval=0 And (p.PaymentMonth>='" + oMnth.ToString() + "' AND p.PaymentYear='" + oYr.ToString() + "' AND p.PaymentMonth!='" + cMnth.ToString() + "') group by p.OwnerID", conn);
+                    MySqlDataAdapter sql = new MySqlDataAdapter("select p.OwnerID,count(p.Approval) as Approvals from PensionPayment p where p.Approval=0 And (p.PaymentMonth>='" + oMnth.ToString() + "' AND p.PaymentYear='" + oYr.ToString() + "' AND p.PaymentMonth!='" + cMnth.ToString() + "') group by p.OwnerID", conn);
                     sql.Fill(dt);
 
                 }
                 else
                 {
-                    MySqlDataAdapter sql2 = new MySqlDataAdapter("select OwnerID,count(Approval) as Approvals from PensionScheme.PensionPayment p where Approval=0 And (PaymentMonth='12' AND PaymentYear='" + (cYr - 1).ToString() + "' Or PaymentMonth='1' AND PaymentYear='" + cYr.ToString() + "') group by OwnerID", conn);
+                    MySqlDataAdapter sql2 = new MySqlDataAdapter("select OwnerID,count(Approval) as Approvals from PensionPayment p where Approval=0 And (PaymentMonth='12' AND PaymentYear='" + (cYr - 1).ToString() + "' Or PaymentMonth='1' AND PaymentYear='" + cYr.ToString() + "') group by OwnerID", conn);
                     sql2.Fill(dt);
                 }
 

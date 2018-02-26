@@ -41,5 +41,7 @@ namespace PensionScheme
         public double PensionRate { get => pensionRate; set => pensionRate = value; }
         public double Pension1 { get => pension; set => pension = value; }
         public double AdditionRate { get => additionRate; set => additionRate = value; }
+
+        
     }
 }

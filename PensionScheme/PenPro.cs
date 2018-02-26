@@ -17,60 +17,15 @@ namespace PensionScheme
     public partial class PenPro : Form
     {
         int VoucherNo;
+        PaymentBUO pb = new PaymentBUO();
+        
 
-        public void PenData()
-        {
-            MySqlConnection c1 = new MySqlConnection(@DBStr.connectionString);
-            DataTable dt = new DataTable();
-            DataTable ar = new DataTable();
-            ar = Arrear();
-            MySqlDataAdapter sa = new MySqlDataAdapter("select ID, Salary, Type, Pension, Bank, PaymentActNo FROM .Employee AS e where Type = '2' AND SystemValidity = True", c1);
-            sa.Fill(dt);
-            dt.Columns.Add("Arears", System.Type.GetType("System.Double"));
-            dt.Columns.Add("Total Payment", System.Type.GetType("System.Double"));
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (DataRow row2 in ar.Rows)
-                {
-
-                    row[7] = row[3];
-                    if (row[0].ToString().Equals(row2[1].ToString()))
-                    {
-
-                        row[6] = row2[4];
-                        //row[7] = "999.45";
-                        row[7] = (Convert.ToInt32(row[3]) + Convert.ToInt32(row2[4])).ToString();
-                        break;
-                    }
-
-                }
-
-            }
-            PensionerView.DataSource = dt;
-
-        }
-
-        public DataTable Arrear()
-        {
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                MySqlDataAdapter sql = new MySqlDataAdapter("select ID,OwnerID,PeriodYear,PeriodMonth,Amount from Arrears where PeriodYear='" + Period.Value.Year.ToString() + "' AND PeriodMonth='" + Period.Value.Month.ToString() + "'", conn);
-                DataTable ar = new DataTable();
-                sql.Fill(ar);
-                return ar;
-            }
-            catch (Exception n)
-            {
-                MessageBox.Show(n.ToString());
-                return null;
-            }
-        }
+       
 
 
         public void ArrearView()
         {
-            ArrearData.DataSource = Arrear();
+            ArrearData.DataSource = pb.Arrear(Period.Value);
         }
         public void CalVoucherNo()
         {
@@ -90,28 +45,12 @@ namespace PensionScheme
         public PenPro()
         {
             InitializeComponent();
-            ArrearData.DataSource = Arrear();
-            PenData();
+            ArrearData.DataSource = pb.Arrear(Period.Value);
+            pb.PenData(Period.Value,PensionerView);
+            
         }
 
-        public void PenView()
-        {
-            try
-            {
-
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-
-                MySqlDataAdapter sql = new MySqlDataAdapter("select ID,Salary,Type,Pension from PensionScheme.Employee ee where ee.SystemValidity='True' AND Type='2' ", conn);
-                DataTable dt = new DataTable();
-                PensionerView.DataSource = dt;
-            }
-            catch (Exception e)
-            {
-
-                MessageBox.Show(e.ToString());
-            }
-
-        }
+       
 
         private void PensionPro_Click(object sender, EventArgs e)
         {
@@ -131,47 +70,18 @@ namespace PensionScheme
 
             try
             {
-                MySqlConnection c1 = new MySqlConnection(@DBStr.connectionString);
+                
                 DataTable dt = new DataTable();
-                DataTable ar = new DataTable();
-
-                ar = Arrear();
-                MySqlDataAdapter sa = new MySqlDataAdapter("select ID, Salary, Type, Pension, Bank, PaymentActNo FROM .Employee AS e where Type = '2' AND SystemValidity = True", c1);
-                sa.Fill(dt);
-                dt.Columns.Add("Arears", System.Type.GetType("System.Double"));
-                dt.Columns.Add("Total Payment", System.Type.GetType("System.Double"));
-                foreach (DataRow row in dt.Rows)
-                {
-
-                    row[7] = (Convert.ToInt32(row[3])).ToString();
-                    // MessageBox.Show(row[7].ToString());
-                    foreach (DataRow row2 in ar.Rows)
-                    {
-
-
-                        if (row[0].ToString().Equals(row2[1].ToString()))
-                        {
-
-                            row[6] = row2[4];
-                            //row[7] = "999.45";
-                            row[7] = (Convert.ToInt32(row[3]) + Convert.ToInt32(row2[4])).ToString();
-                            //MessageBox.Show(row[7].ToString());
-                            break;
-                        }
 
 
 
-
-                    }
-
-                }
-                PensionerView.DataSource = dt;
+                dt = pb.PenData(Period.Value, PensionerView);
                 int progress = 0;
                 int length = dt.Rows.Count;
 
 
 
-                CalVoucherNo();
+                VoucherNo=pb.CalVoucherNo();
 
                 MessageBox.Show("Start Process");
                 MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
@@ -179,26 +89,30 @@ namespace PensionScheme
 
                 for (int n = 0; n < length; n++)
                 {
-                    conn.Open();
-                    MySqlCommand sql;
+                    
+                    //MySqlCommand sql;
 
                     //    MessageBox.Show(dt.Rows[n][7].ToString());
-                    sql = new MySqlCommand("insert into PensionPayment(OwnerID,PaymentValue,PaymentMonth,PaymentYear,PaymentBank,AccountNo,PaymentSubDate,VoucherNo,Type,Approval) values('" + dt.Rows[n][0].ToString() + "','" + dt.Rows[n][7].ToString() + "','" + Period.Value.Month.ToString() + "','" + Period.Value.Year.ToString() + "','" + dt.Rows[n][4].ToString() + "','" + dt.Rows[n][5].ToString() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + VoucherNo.ToString() + "','2',0)", conn);
-                    //insert to the database
-
-
-                    MySqlDataReader reader;
-                    reader = sql.ExecuteReader();
-                    // MessageBox.Show("Sql" + n.ToString());
-                    while (reader.Read())
+                    PaymentVO pv = new PaymentVO(dt.Rows[n][0].ToString(),Convert.ToDouble(dt.Rows[n][7].ToString()), false,Convert.ToInt32(Period.Value.Month.ToString()),Convert.ToInt32(Period.Value.Year.ToString()),Convert.ToInt32(dt.Rows[n][4].ToString()) , dt.Rows[n][5].ToString(),DateTime.Now,VoucherNo,2);
+                    if (pb.InsertPayment(pv))
                     {
+                        /*sql = new MySqlCommand("insert into PensionPayment(OwnerID,PaymentValue,PaymentMonth,PaymentYear,PaymentBank,AccountNo,PaymentSubDate,VoucherNo,Type,Approval) values('" + dt.Rows[n][0].ToString() + "','" + dt.Rows[n][7].ToString() + "','" + Period.Value.Month.ToString() + "','" + Period.Value.Year.ToString() + "','" + dt.Rows[n][4].ToString() + "','" + dt.Rows[n][5].ToString() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + VoucherNo.ToString() + "','2',0)", conn);
+                        //insert to the database
+
+
+                        MySqlDataReader reader;
+                        reader = sql.ExecuteReader();
+                        // MessageBox.Show("Sql" + n.ToString());
+                        while (reader.Read())
+                        {
+                        }
+                        */
+                        progress = Convert.ToInt32((n + 1) * 100 / length);
+                        progressBar1.Increment(progress);
                     }
-                    progress = Convert.ToInt32((n + 1) * 100 / length);
-                    progressBar1.Increment(progress);
-                    conn.Close();
                     //MessageBox.Show(n.ToString());
                 }
-
+                if(progress==100)
                 MessageBox.Show("Sucessfull");
                 progressBar1.Value = 0;
             }
@@ -216,27 +130,12 @@ namespace PensionScheme
         private void button1_Click(object sender, EventArgs e)
         {
             //Bank_slip();
-            WriteData();
+            pb.WriteData(DateTime.Now);
         }
 
         private void PenPro_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'pensionSchemeDataSet13.Pensioners' table. You can move, or remove it, as needed.
-         //   this.pensionersTableAdapter7.Fill(this.pensionSchemeDataSet13.Pensioners);
-            // TODO: This line of code loads data into the 'pensionSchemeDataSet12.Pensioners' table. You can move, or remove it, as needed.
-         //   this.pensionersTableAdapter6.Fill(this.pensionSchemeDataSet12.Pensioners);
-            // TODO: This line of code loads data into the 'pensionSchemeDataSet11.Pensioners' table. You can move, or remove it, as needed.
-         //   this.pensionersTableAdapter5.Fill(this.pensionSchemeDataSet11.Pensioners);
-            // TODO: This line of code loads data into the 'nEWW.Pensioners' table. You can move, or remove it, as needed.
-          //  this.pensionersTableAdapter4.Fill(this.nEWW.Pensioners);
-            // TODO: This line of code loads data into the '_new.Pensioners' table. You can move, or remove it, as needed.
-          //  this.pensionersTableAdapter3.Fill(this._new.Pensioners);
-            // TODO: This line of code loads data into the 'data.Pensioners' table. You can move, or remove it, as needed.
-         //   this.pensionersTableAdapter2.Fill(this.data.Pensioners);
-            // TODO: This line of code loads data into the 'pensionSchemeDataSet10.Pensioners' table. You can move, or remove it, as needed.
-         //   this.pensionersTableAdapter1.Fill(this.pensionSchemeDataSet10.Pensioners);
-            // TODO: This line of code loads data into the 'pensionSchemeDataSet9.Pensioners' table. You can move, or remove it, as needed.
-         //   this.pensionersTableAdapter.Fill(this.pensionSchemeDataSet9.Pensioners);
+            
 
         }
 
@@ -250,7 +149,8 @@ namespace PensionScheme
         private void Period_ValueChanged(object sender, EventArgs e)
         {
             ArrearView();
-            PenData();
+            pb.PenData(Period.Value, PensionerView);
+            
         }
 
         private void PensionHistory_Click(object sender, EventArgs e)
@@ -266,100 +166,7 @@ namespace PensionScheme
         }
 
 
-        public void WriteData()
-        {
-
-            try
-            {
-                //D:\\pensionslip.txt
-                FileStream fs = new FileStream("D:\\PaymentReports\\pensionslip.txt", FileMode.Create, FileAccess.Write);
-
-                StreamWriter sw = new StreamWriter(fs);
-                try
-                {
-                    string first = string.Empty;
-                    string second = string.Empty;
-                    string third = string.Empty;
-                    string fourth = string.Empty;
-                    string fifth = string.Empty;
-                    string sixth = string.Empty;
-
-                    using (MySqlConnection conn = new MySqlConnection(@DBStr.connectionString))
-                    {
-                        using (MySqlCommand command = new MySqlCommand("SELECT ID,Name,University,Bank,PaymentValue,PaymentActNo FROM Employee,PensionPayment where Employee.Type='2' AND  PaymentYear='"+DateTime.Now.Year.ToString()+"' AND PaymentMonth='"+DateTime.Now.Month.ToString()+"' AND ID=OwnerID", conn))
-                        {
-                            conn.Open();
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (!(reader.HasRows)){
-                                    MessageBox.Show("No records for Current Period");
-                                    sw.Flush();
-
-                                    sw.Close();
-
-                                    fs.Close();
-                                    if (File.Exists(@"D:\\PaymentReports\\pensionslip.txt"))
-                                    {
-                                        File.Delete(@"D:\\PaymentReports\\pensionslip.txt");
-                                    }
-                                    return;
-                                }
-                                while (reader.Read())
-                                {
-                                    first = reader[0].ToString();
-                                    second = reader[1].ToString();
-                                    third = reader[2].ToString();
-                                    fourth = reader[3].ToString();
-                                    fifth = reader[4].ToString();
-                                    sixth = reader[5].ToString();
-
-                                    string str = "\t\t\b Employee Pension issue Bankslip:\t\t";
-                                    string str5 = "\nPayment Amount:\t\t";
-                                    string str1 = "\nEmployeeID:\t\t";
-                                    string str2 = "\nEmployee Name:\t\t";
-                                    string str4 = "\nBank Name:\t\t";
-                                    string str3 = "\nUniversity:\t\t";
-                                    string str6 = "\nBank Account NO:\t";
-                                    string str7 = "------------------------------------------------------\n";
-                                    sw.WriteLine(str);
-                                    sw.WriteLine(str1 + first);
-                                    sw.WriteLine(str2 + second);
-                                    sw.WriteLine(str3 + third);
-                                    sw.WriteLine(str4 + fourth);
-                                    sw.WriteLine(str5 + fifth);
-                                    sw.WriteLine(str6 + sixth);
-                                    sw.WriteLine(str7);
-                                }
-                            }
-                        }
-                    }
-
-                    MessageBox.Show("success");
-                }
-                catch (Exception ex)
-                {
-                    //MessageBox.Show(ex.ToString());
-                    MessageBox.Show("Error");
-                }
-
-                // Console.WriteLine ("Enter the text which you want to write to the file");
-
-                // string str = "arosha";
-
-                // sw.WriteLine(str);
-
-                sw.Flush();
-
-                sw.Close();
-
-                fs.Close();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.ToString());
-
-            }
-        }
+       
 
         private void PensionerView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

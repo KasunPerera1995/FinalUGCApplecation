@@ -23,8 +23,31 @@ namespace PensionScheme
         {
             string query = string.Format("select * from " + tableName + " where " + columnName + " = @dinputName");
             MySqlParameter[] mySqlParameters = new MySqlParameter[1];
-            mySqlParameters[0] = new MySqlParameter("@dinPutName", inputName);
+            mySqlParameters[0] = new MySqlParameter("@dinputName", inputName);
             return conn.executeSelectQuery(query, mySqlParameters);
+        }
+        public DataTable DefaultSearch(string tableName, string column1Name, object input1Name, string column2Name, object input2Name) {
+            string query = string.Format("select * from " + tableName + " where " + column1Name + " = @dinput1Name AND " + column2Name + " = @dinput2Name");
+            MySqlParameter[] mySqlParameters = new MySqlParameter[2];
+            mySqlParameters[0] = new MySqlParameter("@dinput1Name", input1Name);
+            mySqlParameters[1] = new MySqlParameter("@dinput2Name", input2Name);
+            return conn.executeSelectQuery(query, mySqlParameters);
+
+        }
+        public DataTable DefaultSearch(string tableName, string column1Name, object input1Name, string column2Name, object input2Name,string column3Name,object input3Name)
+        {
+           
+                string query = string.Format("select * from " + tableName + " where " + column1Name + " = @dinput1Name AND " + column2Name + " = @dinput2Name AND " + column3Name + " = @dinput3Name");
+                MySqlParameter[] mySqlParameters = new MySqlParameter[3];
+               // MessageBox.Show(input1Name.ToString() + "   " + input2Name.ToString() + "   " + input3Name.ToString() + "   ");
+                mySqlParameters[0] = new MySqlParameter("@dinput1Name", input1Name);
+                mySqlParameters[1] = new MySqlParameter("@dinput2Name", input2Name);
+                mySqlParameters[2] = new MySqlParameter("@dinput3Name", input3Name);
+
+                //MessageBox.Show(mySqlParameters[0].Value.ToString() + "   " + mySqlParameters[1].Value.ToString() + "   " + mySqlParameters[2].Value.ToString() + "   ");
+
+                return conn.executeSelectQuery(query, mySqlParameters);
+           
         }
 
         public DataTable GetTable(string tableName) {

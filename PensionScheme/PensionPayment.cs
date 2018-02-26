@@ -15,6 +15,8 @@ namespace PensionScheme
 {
     public partial class PensionPayment : Form
     {
+        CommonBUO cb = new CommonBUO();
+        PaymentBUO pb = new PaymentBUO();
         public PensionPayment()
         {
             InitializeComponent();
@@ -31,24 +33,13 @@ namespace PensionScheme
             {
                 if (ShowAll.Checked)//if select all
                 {
-                    MySqlConnection c = new MySqlConnection(@DBStr.connectionString);
-                    //conn.Open();
-                    MySqlDataAdapter all = new MySqlDataAdapter("select * from PensionPayment where Type='2'", c);
-                    DataTable al = new DataTable();
-                    all.Fill(al);
-                    //conn.Close();
-                    PensionHistory.DataSource = al;
+                    cb.FillDataGridCondition(PensionHistory, "PensionPayment", "Type", 2);
                     return;
 
 
                 }//if select date
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                //conn.Open();
-                MySqlDataAdapter sql = new MySqlDataAdapter("select * from PensionPayment where PaymentYear='" + PensionPeriodSelect.Value.Year.ToString() + "' AND PaymentMonth='" + PensionPeriodSelect.Value.Month.ToString() + "' AND Type='2'", conn);
-                DataTable dt = new DataTable();
-                sql.Fill(dt);
-                //conn.Close();
-                PensionHistory.DataSource = dt;
+                pb.PaymentGridFill(PensionHistory, PensionPeriodSelect.Value, "pension");
+               
             }
             catch (Exception en)
             {
@@ -63,99 +54,11 @@ namespace PensionScheme
             Refresh();
         }
 
-        public void WriteData()
-        {
-
-            FileStream fs = new FileStream("D:\\test5.txt", FileMode.Create, FileAccess.Write);
-
-            StreamWriter sw = new StreamWriter(fs);
-            try
-            {
-                string first = string.Empty;
-                string second = string.Empty;
-                string third = string.Empty;
-                string fourth = string.Empty;
-                string fifth = string.Empty;
-                string sixth = string.Empty;
-
-                using (MySqlConnection conn = new MySqlConnection(@DBStr.connectionString))
-                {
-                    using (MySqlCommand command = new MySqlCommand("SELECT ID,Name,University,Bank,Pension,PaymentActNo FROM Employee,PensionPayment where OwnerID=ID AND PaymentYear = '" + PensionPeriodSelect.Value.Year.ToString() + "' AND PaymentMonth = '" + PensionPeriodSelect.Value.Month.ToString() + "' AND Employee.Type = '2'", conn))
-                    {
-
-
-                        conn.Open();
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-
-                            if (!(reader.HasRows))
-                            {
-                                MessageBox.Show("No records for selected Period");
-                                sw.Flush();
-
-                                sw.Close();
-
-                                fs.Close();
-                                if (File.Exists(@"D:\\PaymentReports\\pensionslip.txt"))
-                                {
-                                    File.Delete(@"D:\\PaymentReports\\pensionslip.txt");
-                                }
-                                return;
-                            }
-                            while (reader.Read())
-                            {
-                                first = reader[0].ToString();
-                                second = reader[1].ToString();
-                                third = reader[2].ToString();
-                                fourth = reader[3].ToString();
-                                fifth = reader[4].ToString();
-                                sixth = reader[5].ToString();
-
-                                string str = "\t\t\b Employee Pension issue Bankslip:\t\t";
-                                string str5 = "\nPension Amount:\t\t";
-                                string str1 = "\nEmployeeID:\t\t";
-                                string str2 = "\nEmployee Name:\t\t";
-                                string str4 = "\nBank Name:\t\t";
-                                string str3 = "\nUniversity:\t\t";
-                                string str6 = "\nBank Account NO:\t";
-                                string str7 = "------------------------------------------------------\n";
-                                sw.WriteLine(str);
-                                sw.WriteLine(str1 + first);
-                                sw.WriteLine(str2 + second);
-                                sw.WriteLine(str3 + third);
-                                sw.WriteLine(str4 + fourth);
-                                sw.WriteLine(str5 + fifth);
-                                sw.WriteLine(str6 + sixth);
-                                sw.WriteLine(str7);
-                            }
-                        }
-                    }
-                }
-
-                MessageBox.Show("success");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            // Console.WriteLine ("Enter the text which you want to write to the file");
-
-            // string str = "arosha";
-
-            // sw.WriteLine(str);
-
-            sw.Flush();
-
-            sw.Close();
-
-            fs.Close();
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WriteData();
+            pb.WriteData(PensionPeriodSelect.Value);
         }
 
         private void PensionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)

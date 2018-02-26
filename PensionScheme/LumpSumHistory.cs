@@ -15,32 +15,14 @@ namespace PensionScheme
 {
     public partial class LumpSumHistory : Form
     {
-        public void LumpSumSelection() {
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                MySqlDataAdapter sql = new MySqlDataAdapter("select * from PensionPayment where Type='3'", conn);
-                DataTable ds = new DataTable();
-                sql.Fill(ds);
-                LumpSumSelect.DataSource = ds;
-                LumpSumSelect.DisplayMember = "PaymentSubDate";
-                LumpSumSelect.ValueMember = "PaymentSubDate";
-
-
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.ToString());
-
-            }
-
-
-
-        }
+        CommonBUO cb = new CommonBUO();
+        PaymentBUO pb=new PaymentBUO();
+        
         public LumpSumHistory()
         {
             InitializeComponent();
-            LumpSumSelection();
+            cb.FillComboBoxCondition(LumpSumSelect, "PensionPayment", "PaymentSubDate", "PaymentSubDate", "Type", 3);
+            
             
             LumpSumHistoryView();
         }
@@ -53,25 +35,13 @@ namespace PensionScheme
                 
                 if (ShowAll.Checked)
                 {
-                    MySqlConnection c = new MySqlConnection(@DBStr.connectionString);
-                    //conn.Open();
-                    MySqlDataAdapter all = new MySqlDataAdapter("select * from PensionPayment where Type='3'", c);
-                    DataTable al = new DataTable();
-                    all.Fill(al);
-                    //conn.Close();
-                    LumpSumView.DataSource = al;
+                    cb.FillDataGridCondition(LumpSumView, "PensionPayment", "Type", 3);
                     return;
 
 
                 }
-
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                //conn.Open();
-                MySqlDataAdapter sql = new MySqlDataAdapter("select * from PensionPayment where PaymentSubDate='" + (Convert.ToDateTime(LumpSumSelect.SelectedValue.ToString())).ToString("yyyy-MM-dd") + "' AND Type='3'", conn);
-                DataTable dt = new DataTable();
-                sql.Fill(dt);
-                //conn.Close();
-                LumpSumView.DataSource = dt;
+                pb.PaymentGridFill(LumpSumView, (Convert.ToDateTime(LumpSumSelect.SelectedValue.ToString())), "lumpsum");
+                
             }
             catch (Exception en)
             {

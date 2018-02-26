@@ -14,11 +14,14 @@ namespace PensionScheme
 {
     public partial class Arrears : Form
     {
+        CommonBUO cb = new CommonBUO();
+        PaymentBUO pb = new PaymentBUO();
         public Arrears()
         {
             InitializeComponent();
             FillArrearOwner();
-            ArrearView();
+            cb.FillDataGrid(dataGridView1, "Arrears");
+           // ArrearView();
             Period.Value = DateTime.Today;
         }
         public void FillArrearOwner()
@@ -41,72 +44,42 @@ namespace PensionScheme
 
         }
 
-        public void ArrearView()
-        {
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                //MessageBox.Show(MemID);
-                MySqlDataAdapter sql = new MySqlDataAdapter("select ID,OwnerID,PeriodYear,PeriodMonth,Amount from Arrears", conn);
-                DataTable dt = new DataTable();
-                sql.Fill(dt);
-                dataGridView1.DataSource = dt;
-            }
-            catch (Exception ee)
-            {
-
-                MessageBox.Show(ee.ToString());
-            }
-            Refresh();
-
-
-        }
+      
         private void Arrears_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'pensionSchemeDataSet8.Employee' table. You can move, or remove it, as needed.
-            //this.employeeTableAdapter.Fill(this.pensionSchemeDataSet8.Employee);
-            // TODO: This line of code loads data into the 'pensionSchemeDataSet14.Arrears' table. You can move, or remove it, as needed.
-          //  this.arrearsTableAdapter.Fill(this.pensionSchemeDataSet14.Arrears);
-            // TODO: This line of code loads data into the 'databaseDataSet.Complaint' table. You can move, or remove it, as needed.
-            //this.complaintTableAdapter.Fill(this.databaseDataSet.Complaint);
-
+           
         }
         public void Insert()
         {
-
+            
             if (Period.Value.Year > DateTime.Now.Year || (Period.Value.Month > DateTime.Now.Month && Period.Value.Year == DateTime.Now.Year))
             {
                 MessageBox.Show("Do not Enter Future Periods");
                 return;
             }
-            try
-            {
-                if (String.IsNullOrEmpty(Value.Text) || (Convert.ToInt32(Value.Text)) == 0)
+            if (String.IsNullOrEmpty(Value.Text) || (Convert.ToInt32(Value.Text)) == 0)
                 {
                     MessageBox.Show("Enter Arrear Value");
                     return;
                 }
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                conn.Open();
-                string query = "insert into Arrears(OwnerID,PeriodYear,PeriodMonth,Amount) values('" + ID.SelectedValue.ToString() + "','" + Period.Value.Year.ToString() + "','" + Period.Value.Month.ToString() + "','" + Value.Text + "')";
-                MySqlCommand com = new MySqlCommand(query, conn);
-                com.ExecuteNonQuery();
-                MessageBox.Show("Update Successful");
-                dataGridView1.Refresh();
-                conn.Close();
-            }
-
-
-            catch (Exception ex)
+            ArrearVO ar = new ArrearVO(ID.SelectedValue.ToString(), Convert.ToInt32(Period.Value.Year.ToString()), Convert.ToInt32(Period.Value.Month.ToString()), Convert.ToDouble(Value.Text));
+            if (pb.InsertArrear(ar))
             {
-                MessageBox.Show("Invalid Entry");
+                MessageBox.Show("Insert Successful");
+                dataGridView1.Refresh();
             }
+            else {
+                MessageBox.Show("Update Failed");
+            }
+
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
             Insert();
             Refresh();
-            ArrearView();
+            cb.FillDataGrid(dataGridView1, "Arrears");
+           // ArrearView();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

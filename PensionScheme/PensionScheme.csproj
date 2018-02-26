@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrearVO.cs" />
     <Compile Include="CommonBUO.cs" />
     <Compile Include="CommonDAO.cs" />
     <Compile Include="ComplaintUser.cs" />

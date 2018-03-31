@@ -19,12 +19,13 @@ namespace PensionScheme
         public Arrears()
         {
             InitializeComponent();
-            FillArrearOwner();
+            pb.ArrearOwnerCombo(ID);
+            //FillArrearOwner();
             cb.FillDataGrid(dataGridView1, "Arrears");
            // ArrearView();
             Period.Value = DateTime.Today;
         }
-        public void FillArrearOwner()
+        /*public void FillArrearOwner()
         {
             try
             {
@@ -43,7 +44,7 @@ namespace PensionScheme
             }
 
         }
-
+        */
       
         private void Arrears_Load(object sender, EventArgs e)
         {

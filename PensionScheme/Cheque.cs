@@ -18,48 +18,18 @@ namespace PensionScheme
     public partial class Cheque : Form
     {
         Contribution co = new Contribution();
+        CommonBUO cb = new CommonBUO();
+        ContributionBUO cc=new ContributionBUO();
         public Cheque()
         {
             InitializeComponent();
-            FillComboBoxUni();
-            FillComboBoxStatus();
+            cb.FillComboBox(Uni,"University", "UniversityName", "UniversityID");
+            cb.FillComboBox(Status,"Status","Name","StatusID");
+            //  FillComboBoxUni();
+           // FillComboBoxStatus();
         }
-        public void FillComboBoxUni()
-        {
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                MySqlDataAdapter sql = new MySqlDataAdapter("select * from University", conn);
-                DataTable ds = new DataTable();
-                sql.Fill(ds);
-                Uni.DataSource = ds;
-                Uni.DisplayMember = "UniversityName";
-                Uni.ValueMember = "UniversityID";
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.ToString());
-            }
-
-        }
-        public void FillComboBoxStatus()
-        {
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                MySqlDataAdapter sql = new MySqlDataAdapter("select * from Status", conn);
-                DataTable ds = new DataTable();
-                sql.Fill(ds);
-                Status.DataSource = ds;
-                Status.DisplayMember = "Name";
-                Status.ValueMember = "StatusID";
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.ToString());
-            }
-
-        }
+        
+        
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
@@ -96,7 +66,7 @@ namespace PensionScheme
             }
             if (String.IsNullOrEmpty(Amount.Text) || (Convert.ToInt32(Amount.Text)) == 0)
             {
-                MessageBox.Show("Enter Arrear Value");
+                MessageBox.Show("Enter  Value");
                 return;
             }
             if (String.IsNullOrEmpty(ReNo.Text))
@@ -111,25 +81,15 @@ namespace PensionScheme
                 return;
             }
 
-
-            try
+            ChequeVO ch = new ChequeVO(Convert.ToInt32(Uni.SelectedValue.ToString()), ReNo.Text,Convert.ToDouble(Amount.Text) ,Convert.ToInt32(Period.Value.Year.ToString()),Convert.ToInt32(Period.Value.Month.ToString()),Convert.ToInt32(Status.SelectedValue.ToString()),Period.Value);
+            if (cc.InsertCheque(ch))
             {
-                MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-                conn.Open();
-                string query = "insert into Cheque(CHEQREC_INSTITUTE,CHEQREC_REFNO,CHEQREC_AMOUNT,CHEQREC_YEAR,CHEQREC_PERIODNO,CHEQREC_STATUS,CHEQREC_DATE) values('" + Uni.SelectedValue.ToString() + "','" + ReNo.Text + "','" + Amount.Text + "','" + Period.Value.Year.ToString() + "','" + Period.Value.Month.ToString() + "','" + Status.SelectedValue.ToString() + "','" + Period.Value.ToString("yyyy-MM-dd") + "')";
-                MySqlCommand com = new MySqlCommand(query, conn);
-                com.ExecuteNonQuery();
-                MessageBox.Show("Update Successful");
-                conn.Close();
+                MessageBox.Show("Insert Successful");
             }
-
-
-            catch (Exception ex)
-            {
+            else {
                 MessageBox.Show("Error");
             }
-
-
+            
 
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

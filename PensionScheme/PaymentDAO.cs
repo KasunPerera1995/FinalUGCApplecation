@@ -98,14 +98,22 @@ namespace PensionScheme
 
 
         }
-        public DataTable SlipList(DateTime period) {
-            string query = String.Format("SELECT ID,Name,University,Bank,PaymentValue,PaymentActNo FROM Employee,PensionPayment where Employee.Type='2' AND  PaymentYear=@year AND PaymentMonth=@month AND ID=OwnerID");
-            MySqlParameter[] mySqlParameters = new MySqlParameter[2];
+        public DataTable SlipList(DateTime period,int type) {
+            string query = String.Format("SELECT ID,Name,University,Bank,PaymentValue,PaymentActNo FROM Employee,PensionPayment where Employee.Type=@type AND  PaymentYear=@year AND PaymentMonth=@month AND ID=OwnerID");
+            MySqlParameter[] mySqlParameters = new MySqlParameter[3];
             mySqlParameters[0] = new MySqlParameter("@year", period.Year.ToString());
             mySqlParameters[1] = new MySqlParameter("@month", period.Month.ToString());
+            mySqlParameters[2] = new MySqlParameter("@type", type.ToString());
             return conn.executeSelectQuery(query, mySqlParameters);
 
         }
+        public DataTable LumpSumProView()
+        {
+            string query = String.Format("select ID, Name, TotalContribution, Bank, PaymentActNo, Type from Employee where Type = '3' AND SystemValidity = '1'");
+            MySqlParameter[] mySqlParameters = new MySqlParameter[0];
+            return conn.executeSelectQuery(query, mySqlParameters);
+        }
+
     }
 
 }

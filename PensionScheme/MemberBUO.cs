@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Windows.Forms;
 using System.Threading;
+using System.Security.Cryptography;
 
 namespace PensionScheme
 {
@@ -41,9 +42,9 @@ namespace PensionScheme
                 dt.Columns.Add();
                 dt.Columns.Add();
                 dt.Columns.Add();
+                dt.Columns.Add();
 
-
-                dt.Rows.Add(new Object[] { mu.Nic, mu.Name, mu.Dob, mu.ServiceStartDate, mu.PensionSchemeRegisteredDate, mu.University, mu.Post, mu.Acadamic, mu.Salary, mu.Bank, mu.PaymentActNo, mu.BasicSalary, mu.Allowances, mu.Email });
+                dt.Rows.Add(new Object[] { mu.Nic, mu.Name, mu.Dob, mu.ServiceStartDate, mu.PensionSchemeRegisteredDate, mu.University, mu.Post, mu.Acadamic, mu.Salary, mu.Bank, mu.PaymentActNo, mu.BasicSalary, mu.Allowances,mu.Password ,mu.Email });
 
                 return mem.InsertMember(dt);
 
@@ -119,6 +120,31 @@ namespace PensionScheme
                 dt.Rows.Add(new Object[] { d.Id, d.Name, d.Type, d.RelatedEmployee, d.Age });
 
                 return mem.InsertDependent(dt);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+
+        }
+        public bool RegisterAdmin(AdminVO d)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add();
+                dt.Columns.Add();
+                dt.Columns.Add();
+                dt.Columns.Add();
+                
+
+
+                dt.Rows.Add(new Object[] { d.OperatingEmployeeID, d.LoginName, d.AccountType, d.AdminPassword});
+
+                return mem.InsertAdmin(dt);
 
 
             }
@@ -416,6 +442,10 @@ namespace PensionScheme
             return com.DefaultDelete("Dependent","RelatedEmployeeID",id);
 
         }
+        public bool DeleteAdmin(string id) {
+            return com.DefaultDelete("Admin", "AdminID", id);
+
+        }
         public bool UpdateDependent(DependentUser du) {
             try
             {
@@ -441,5 +471,69 @@ namespace PensionScheme
             return mb;
 
         }
+        public string HashCode(string data) {
+            SHA1 sha = SHA1.Create();
+            byte[] hashdata = sha.ComputeHash(Encoding.Default.GetBytes(data));
+            StringBuilder returnvalue = new StringBuilder();
+
+            for (int i = 0; i < hashdata.Length; i++) {
+                returnvalue.Append(hashdata[i].ToString());
+
+            }
+            return returnvalue.ToString();
+        }
+
+        public bool UpdateAdmin(AdminVO du) {
+
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add();
+                dt.Columns.Add();
+                dt.Columns.Add();
+                dt.Columns.Add();
+                dt.Columns.Add();
+
+                dt.Rows.Add(new object[] { du.OperatingEmployeeID, du.LoginName, du.AccountType,du.AdminID });
+                return mem.UpdateAdmin(dt);
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.ToString());
+                return false;
+            }
+
+        }
+        public bool CheckAdminPassword(string id, string password)
+        {
+            
+                DataTable dt = com.DefaultSearch("Admin", "LoginName", id, "AdminPassword", HashCode(password));
+                return (dt.Rows.Count > 0);
+            
+            
+        }
+        public bool ChangeAdminPassword(string id, string newpassword, string oldpassword)
+        {
+            if (CheckAdminPassword(id, oldpassword))
+            {
+                return com.defaultUpdate("Admin", "AdminPassword", HashCode(newpassword), "LoginName", id);
+            }
+            else
+                return false;
+
+        }
+
+        public AdminVO LoginAdmin(string userName,string password) {
+            DataTable dt = com.DefaultSearch("Admin", "LoginName", userName, "AdminPassword", HashCode(password));
+            AdminVO ad = new AdminVO();
+            ad.OperatingEmployeeID = dt.Rows[0][3].ToString();
+            ad.LoginName = userName;
+            ad.AdminPassword = password;
+            ad.AccountType = Convert.ToInt32(dt.Rows[0][2].ToString());
+            ad.AdminID = Convert.ToInt32(dt.Rows[0][4].ToString());
+            return ad;
+        }
+
+        
     }
 }

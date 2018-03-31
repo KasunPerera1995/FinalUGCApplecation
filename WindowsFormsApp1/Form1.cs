@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
         static double x = 0.5;
         static Boolean validity = true;
         int len;
-        string globalconnp = "server=192.248.15.244;user id=Kasun;database=pensionscheme";
+        string globalconnp = "server=localhost;user id=root;database=pen";
         //string globalconn = "server=localhost;user id=root;database=financialsection";
         /*public void Combo()
         {
@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Error Invalid Entry");
             }
 
 
@@ -110,7 +110,7 @@ namespace WindowsFormsApp1
             try
             {
                 DBConnect.Open();
-                String query = "select Rate from rates where ID='5'";
+                String query = "select Rate from rates where ID='6'";
                 MySqlCommand cmd = new MySqlCommand(query, DBConnect);
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
@@ -201,6 +201,9 @@ namespace WindowsFormsApp1
                     MessageBox.Show("All are Valid");
                     Insert(val, len);
                     MessageBox.Show("Entry Successful");
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Rows.Clear();
+                    progressBar1.Value = 0;
                 }
             }
             catch (Exception t)

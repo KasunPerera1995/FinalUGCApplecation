@@ -101,6 +101,7 @@ namespace PensionScheme
 
                 notificationP.ShowBalloonTip(1000);
             }
+            LoadMyDetails();
             // Notifications();
             timer1.Start();
             // PaymentReview();
@@ -245,6 +246,21 @@ namespace PensionScheme
 
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void ChangePass_Click(object sender, EventArgs e)
+        {
+            ChangePassword cp = new ChangePassword();
+            cp.Show();
+        }
+        public void LoadMyDetails()
+        {
+            //MessageBox.Show(Log.LoginName + Log.OperatingEmployee + Log.Type);
+            LoginName.Text = Log.LoginName;
+            MyID.Text = Log.OperatingEmployee;
+            Text = Log.Type;
+
 
         }
     }

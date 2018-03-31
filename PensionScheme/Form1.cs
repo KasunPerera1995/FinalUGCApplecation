@@ -15,6 +15,7 @@ namespace PensionScheme
 {
     public partial class Form1 : Form
     {
+        MemberBUO mem = new MemberBUO();
         public Form1()
         {
             InitializeComponent();
@@ -41,44 +42,58 @@ namespace PensionScheme
         {
             try
             {
-                MySqlConnection con = new MySqlConnection(@DBStr.connectionString);//"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kasun\source\WebSites\WebSite4\App_Data\Database.mdf;Integrated Security=True");
-                MySqlDataAdapter sql = new MySqlDataAdapter("select count(*) from Admin where LoginName='" + UserName.Text + "' AND AdminPassword='" + AdminPassword.Text + "'", con);
-                DataTable dt = new DataTable();
-                DataTable type = new DataTable();
-                sql.Fill(dt);
-            
+                //MySqlConnection con = new MySqlConnection(@DBStr.connectionString);//"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kasun\source\WebSites\WebSite4\App_Data\Database.mdf;Integrated Security=True");
+                //MySqlDataAdapter sql = new MySqlDataAdapter("select count(*) from Admin where LoginName='" + UserName.Text + "' AND AdminPassword='" + AdminPassword.Text + "'", con);
 
-
-            if (dt.Rows[0][0].ToString() == "1")
-            {
-                MySqlDataAdapter check = new MySqlDataAdapter("select AccountType from Admin where LoginName='" + UserName.Text + "' AND AdminPassword='" + AdminPassword.Text + "'", con);
-
-                check.Fill(type);
-
-                if (type.Rows[0][0].ToString() == "1")
-                {
-
-                    this.Hide();
-                    Payment p = new Payment();
-                    p.Show();
-                }
-                else if (type.Rows[0][0].ToString() == "2")
-                {
-                    this.Hide();
-                    Contribution c = new Contribution();
-                    c.Show();
-                }
+                //DataTable dt = new DataTable();
+                //DataTable type = new DataTable();
+                //sql.Fill(dt);
                 
-                else if (type.Rows[0][0].ToString() == "4")
+                bool x = mem.CheckAdminPassword(UserName.Text, AdminPassword.Text);
+
+
+            if (x)//dt.Rows[0][0].ToString() == "1"
                 {
-                    this.Hide();
-                    MemberAccount m = new MemberAccount();
-                    m.Show();
-                }
-                else
-                    MessageBox.Show("You Do not have system privilleges");
 
 
+                   AdminVO ad= mem.LoginAdmin(UserName.Text, AdminPassword.Text);
+                    //MySqlDataAdapter check = new MySqlDataAdapter("select AccountType,OperatingEmployeeID from Admin where LoginName='" + UserName.Text + "' AND AdminPassword='" + AdminPassword.Text + "'", con);
+
+                //check.Fill(type);
+                    Log.LoginName = UserName.Text;
+                    Log.OperatingEmployee = ad.OperatingEmployeeID.ToString();//type.Rows[0][1].ToString();
+                    Log.Type = ad.AccountType.ToString();//type.Rows[0][0].ToString();
+                    int type= ad.AccountType;
+                    if (type==1)
+                    {
+
+                        this.Hide();
+                        Payment p = new Payment();
+                        p.Show();
+                    }
+                    else if (type==2)
+                    {
+                        this.Hide();
+                        Contribution c = new Contribution();
+                        c.Show();
+                    }
+
+                    else if (type==3)
+                    {
+                        this.Hide();
+                        MemberAccount m = new MemberAccount();
+                        m.Show();
+                    }
+                    else if (type==4) {
+                        this.Hide();
+                        MainAdmin m = new MainAdmin();
+                        m.Show();
+
+                    }
+                    else
+                        MessageBox.Show("You Do not have system privilleges");
+
+                   
             }
             else
             {

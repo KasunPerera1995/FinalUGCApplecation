@@ -41,15 +41,26 @@
             this.NoOfNotifications = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button4 = new System.Windows.Forms.Button();
             this.Logout = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.Type = new System.Windows.Forms.Label();
+            this.ChangePass = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.MyID = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.LoginName = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notificationP = new System.Windows.Forms.NotifyIcon(this.components);
             this.tabControl1.SuspendLayout();
             this.PaymentDetails.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.PaymentDetails);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(15, 20);
             this.tabControl1.Name = "tabControl1";
@@ -188,6 +199,114 @@
             this.Logout.UseVisualStyleBackColor = false;
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.Teal;
+            this.tabPage5.Controls.Add(this.Type);
+            this.tabPage5.Controls.Add(this.ChangePass);
+            this.tabPage5.Controls.Add(this.label26);
+            this.tabPage5.Controls.Add(this.label24);
+            this.tabPage5.Controls.Add(this.MyID);
+            this.tabPage5.Controls.Add(this.label22);
+            this.tabPage5.Controls.Add(this.LoginName);
+            this.tabPage5.Controls.Add(this.label11);
+            this.tabPage5.Location = new System.Drawing.Point(4, 27);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(878, 434);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "My Details";
+            // 
+            // Type
+            // 
+            this.Type.AutoSize = true;
+            this.Type.BackColor = System.Drawing.Color.Teal;
+            this.Type.ForeColor = System.Drawing.SystemColors.Control;
+            this.Type.Location = new System.Drawing.Point(281, 199);
+            this.Type.Name = "Type";
+            this.Type.Size = new System.Drawing.Size(40, 18);
+            this.Type.TabIndex = 8;
+            this.Type.Text = "####";
+            // 
+            // ChangePass
+            // 
+            this.ChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangePass.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.ChangePass.Location = new System.Drawing.Point(140, 280);
+            this.ChangePass.Name = "ChangePass";
+            this.ChangePass.Size = new System.Drawing.Size(163, 29);
+            this.ChangePass.TabIndex = 7;
+            this.ChangePass.Text = "Change Password";
+            this.ChangePass.UseVisualStyleBackColor = true;
+            this.ChangePass.Click += new System.EventHandler(this.ChangePass_Click);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Teal;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.Control;
+            this.label26.Location = new System.Drawing.Point(108, 61);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(92, 20);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "My Details";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Teal;
+            this.label24.ForeColor = System.Drawing.SystemColors.Control;
+            this.label24.Location = new System.Drawing.Point(108, 199);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(40, 18);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Type";
+            // 
+            // MyID
+            // 
+            this.MyID.AutoSize = true;
+            this.MyID.BackColor = System.Drawing.Color.Teal;
+            this.MyID.ForeColor = System.Drawing.SystemColors.Control;
+            this.MyID.Location = new System.Drawing.Point(281, 152);
+            this.MyID.Name = "MyID";
+            this.MyID.Size = new System.Drawing.Size(40, 18);
+            this.MyID.TabIndex = 3;
+            this.MyID.Text = "####";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Teal;
+            this.label22.ForeColor = System.Drawing.SystemColors.Control;
+            this.label22.Location = new System.Drawing.Point(108, 152);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(46, 18);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "My ID";
+            // 
+            // LoginName
+            // 
+            this.LoginName.AutoSize = true;
+            this.LoginName.BackColor = System.Drawing.Color.Teal;
+            this.LoginName.ForeColor = System.Drawing.SystemColors.Control;
+            this.LoginName.Location = new System.Drawing.Point(281, 116);
+            this.LoginName.Name = "LoginName";
+            this.LoginName.Size = new System.Drawing.Size(40, 18);
+            this.LoginName.TabIndex = 1;
+            this.LoginName.Text = "####";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Teal;
+            this.label11.ForeColor = System.Drawing.SystemColors.Control;
+            this.label11.Location = new System.Drawing.Point(108, 116);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(88, 18);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Login Name";
+            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -212,6 +331,8 @@
             this.tabControl1.ResumeLayout(false);
             this.PaymentDetails.ResumeLayout(false);
             this.PaymentDetails.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -232,5 +353,14 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button Refresh;
         private System.Windows.Forms.NotifyIcon notificationP;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label Type;
+        private System.Windows.Forms.Button ChangePass;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label MyID;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label LoginName;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -64,12 +64,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVO.cs" />
     <Compile Include="ArrearVO.cs" />
+    <Compile Include="ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChequeVO.cs" />
     <Compile Include="CommonBUO.cs" />
     <Compile Include="CommonDAO.cs" />
     <Compile Include="ComplaintUser.cs" />
+    <Compile Include="ContributionBUO.cs" />
+    <Compile Include="ContributionDAO.cs" />
     <Compile Include="ContributionVO.cs" />
     <Compile Include="DependentUser.cs" />
+    <Compile Include="EditAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAdmin.Designer.cs">
+      <DependentUpon>EditAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditPayment.cs" />
+    <Compile Include="InsertContribution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertContribution.Designer.cs">
+      <DependentUpon>InsertContribution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsertPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertPayment.Designer.cs">
+      <DependentUpon>InsertPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs" />
+    <Compile Include="MainAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainAdmin.Designer.cs">
+      <DependentUpon>MainAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberBUO.cs" />
     <Compile Include="MemberDAO.cs" />
     <Compile Include="DBConnection.cs" />
@@ -203,6 +245,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rate.cs" />
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cheque.resx">
       <DependentUpon>Cheque.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +272,9 @@
     <EmbeddedResource Include="Edit Contribution.resx">
       <DependentUpon>Edit Contribution.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditAdmin.resx">
+      <DependentUpon>EditAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,11 +284,20 @@
     <EmbeddedResource Include="Dependent.resx">
       <DependentUpon>Dependent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InsertContribution.resx">
+      <DependentUpon>InsertContribution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertPayment.resx">
+      <DependentUpon>InsertPayment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LumpSum.resx">
       <DependentUpon>LumpSum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LumpSumHistory.resx">
       <DependentUpon>LumpSumHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainAdmin.resx">
+      <DependentUpon>MainAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Member.resx">
       <DependentUpon>Member.cs</DependentUpon>

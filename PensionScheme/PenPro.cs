@@ -130,7 +130,7 @@ namespace PensionScheme
         private void button1_Click(object sender, EventArgs e)
         {
             //Bank_slip();
-            pb.WriteData(DateTime.Now);
+            pb.WriteData(DateTime.Now,2);
         }
 
         private void PenPro_Load(object sender, EventArgs e)
@@ -215,5 +215,11 @@ namespace PensionScheme
                     MessageBox.Show(ee.ToString());
                 }
 }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            InsertPayment ip = new InsertPayment();
+            ip.Show();
+        }
     }
 }

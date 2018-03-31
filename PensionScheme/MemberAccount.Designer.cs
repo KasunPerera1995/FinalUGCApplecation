@@ -89,6 +89,15 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.Refresh = new System.Windows.Forms.Button();
             this.ComplaintGrid = new System.Windows.Forms.DataGridView();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.Type = new System.Windows.Forms.Label();
+            this.ChangePass = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.MyID = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.LoginName = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -98,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComplaintGrid)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -137,7 +147,6 @@
             this.tabPage2.Size = new System.Drawing.Size(872, 453);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Member Registration";
-            //this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // Email
             // 
@@ -184,7 +193,6 @@
             this.MemName.Name = "MemName";
             this.MemName.Size = new System.Drawing.Size(100, 20);
             this.MemName.TabIndex = 27;
-            //this.MemName.TextChanged += new System.EventHandler(this.MemName_TextChanged);
             // 
             // NIC
             // 
@@ -309,7 +317,6 @@
             this.Uni.Name = "Uni";
             this.Uni.Size = new System.Drawing.Size(121, 21);
             this.Uni.TabIndex = 30;
-            //this.Uni.SelectedIndexChanged += new System.EventHandler(this.Uni_SelectedIndexChanged);
             // 
             // Post
             // 
@@ -418,7 +425,6 @@
             this.tabPage1.Size = new System.Drawing.Size(872, 453);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Account Handling";
-            //this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // RefreshAcc
             // 
@@ -505,7 +511,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(704, 378);
             this.dataGridView1.TabIndex = 32;
-           // this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // label3
@@ -547,6 +552,7 @@
             this.Complaints.Controls.Add(this.tabPage2);
             this.Complaints.Controls.Add(this.tabPage3);
             this.Complaints.Controls.Add(this.tabPage4);
+            this.Complaints.Controls.Add(this.tabPage5);
             this.Complaints.Location = new System.Drawing.Point(13, 10);
             this.Complaints.Name = "Complaints";
             this.Complaints.SelectedIndex = 0;
@@ -685,7 +691,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(510, 229);
             this.dataGridView2.TabIndex = 6;
-           // this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentDoubleClick);
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
@@ -727,7 +733,6 @@
             this.tabPage4.Size = new System.Drawing.Size(872, 453);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Complaints";
-            //this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
             // Refresh
             // 
@@ -752,6 +757,109 @@
             this.ComplaintGrid.TabIndex = 0;
             this.ComplaintGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ComplaintGrid_CellContentDoubleClick);
             this.ComplaintGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ComplaintGrid_CellDoubleClick);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.Teal;
+            this.tabPage5.Controls.Add(this.Type);
+            this.tabPage5.Controls.Add(this.ChangePass);
+            this.tabPage5.Controls.Add(this.label26);
+            this.tabPage5.Controls.Add(this.label24);
+            this.tabPage5.Controls.Add(this.MyID);
+            this.tabPage5.Controls.Add(this.label22);
+            this.tabPage5.Controls.Add(this.LoginName);
+            this.tabPage5.Controls.Add(this.label11);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(872, 453);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "My Details";
+            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
+            // 
+            // Type
+            // 
+            this.Type.AutoSize = true;
+            this.Type.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Type.Location = new System.Drawing.Point(281, 199);
+            this.Type.Name = "Type";
+            this.Type.Size = new System.Drawing.Size(35, 13);
+            this.Type.TabIndex = 8;
+            this.Type.Text = "####";
+            // 
+            // ChangePass
+            // 
+            this.ChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangePass.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.ChangePass.Location = new System.Drawing.Point(140, 280);
+            this.ChangePass.Name = "ChangePass";
+            this.ChangePass.Size = new System.Drawing.Size(163, 29);
+            this.ChangePass.TabIndex = 7;
+            this.ChangePass.Text = "Change Password";
+            this.ChangePass.UseVisualStyleBackColor = true;
+            this.ChangePass.Click += new System.EventHandler(this.ChangePass_Click);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label26.Location = new System.Drawing.Point(108, 61);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(92, 20);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "My Details";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label24.Location = new System.Drawing.Point(108, 199);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(31, 13);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Type";
+            // 
+            // MyID
+            // 
+            this.MyID.AutoSize = true;
+            this.MyID.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.MyID.Location = new System.Drawing.Point(281, 152);
+            this.MyID.Name = "MyID";
+            this.MyID.Size = new System.Drawing.Size(35, 13);
+            this.MyID.TabIndex = 3;
+            this.MyID.Text = "####";
+            this.MyID.Click += new System.EventHandler(this.label23_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label22.Location = new System.Drawing.Point(108, 152);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(35, 13);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "My ID";
+            // 
+            // LoginName
+            // 
+            this.LoginName.AutoSize = true;
+            this.LoginName.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.LoginName.Location = new System.Drawing.Point(281, 116);
+            this.LoginName.Name = "LoginName";
+            this.LoginName.Size = new System.Drawing.Size(35, 13);
+            this.LoginName.TabIndex = 1;
+            this.LoginName.Text = "####";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label11.Location = new System.Drawing.Point(108, 116);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Login Name";
             // 
             // timer1
             // 
@@ -780,6 +888,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ComplaintGrid)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -847,5 +957,14 @@
         private System.Windows.Forms.Button RefreshAcc;
         private System.Windows.Forms.TextBox Email;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label MyID;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label LoginName;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button ChangePass;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label Type;
     }
 }

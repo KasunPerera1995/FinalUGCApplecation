@@ -14,21 +14,27 @@ namespace PensionScheme
 {
     public partial class Edit_Contribution : Form
     {
-        public Edit_Contribution()
+        CommonBUO com = new CommonBUO();
+        ContributionBUO cb = new ContributionBUO();
+        public Edit_Contribution(string u)
         {
             InitializeComponent();
+            com.FillComboBox(tUniversity, "University", "UniversityName", "UniversityID");
+            com.FillComboBox(tOwnerID, "Employee", "ID", "ID");
+            tUniversity.SelectedValue = u;
         }
+        
 
         public void UpdateContribution() {
 
             try
             {
-                SqlConnection conn = new SqlConnection(@DBStr.connectionString);
-                conn.Open();
-                SqlCommand sql = new SqlCommand("Update ContributionPen set University='" + tUniversity.Text.ToString() + "',Year='" + tYear.Text.ToString() + "',Month='" + tMonth.Text.ToString() + "',SubDate='" + tSubDate.Text.ToString() + "',Amount='" + tAmount.Text.ToString() + "',ReceiptNo='" + tReceiptNo.Text.ToString() + "',OwnerID='" + tOwnerID.Text.ToString() + "' where ContributionID='" + lContributionID.Text.ToString() + "'", conn);
-                sql.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Update Successful");
+
+                ContributionVO cv = new ContributionVO(Convert.ToInt32(lContributionID.Text),Convert.ToInt32(tUniversity.SelectedValue.ToString()),Convert.ToInt32(tYear.Text.ToString()),Convert.ToInt32(tMonth.Text.ToString()),Convert.ToDateTime(tSubDate.Text.ToString()),Convert.ToDouble(tAmount.Text.ToString()),tReceiptNo.Text.ToString(), tOwnerID.SelectedValue.ToString());
+                if (cb.EditContribution(cv))
+                    MessageBox.Show("Update Successful");
+                else
+                    MessageBox.Show("Update Faailed");
             }
             catch (Exception ee)
             {
@@ -44,6 +50,17 @@ namespace PensionScheme
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            cb.DeleteContribution(lContributionID.Text);
+            this.Close();
+        }
+
+        private void tUniversity_Validated(object sender, EventArgs e)
         {
 
         }

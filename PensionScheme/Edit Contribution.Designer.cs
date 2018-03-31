@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tUniversity = new System.Windows.Forms.TextBox();
             this.tYear = new System.Windows.Forms.TextBox();
             this.tMonth = new System.Windows.Forms.TextBox();
             this.tSubDate = new System.Windows.Forms.TextBox();
             this.tAmount = new System.Windows.Forms.TextBox();
             this.tReceiptNo = new System.Windows.Forms.TextBox();
-            this.tOwnerID = new System.Windows.Forms.TextBox();
             this.lContributionID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,17 +42,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.Update = new System.Windows.Forms.Button();
+            this.UpdateC = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Delete = new System.Windows.Forms.Button();
+            this.tUniversity = new System.Windows.Forms.ComboBox();
+            this.tOwnerID = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tUniversity
-            // 
-            this.tUniversity.Location = new System.Drawing.Point(179, 81);
-            this.tUniversity.Name = "tUniversity";
-            this.tUniversity.Size = new System.Drawing.Size(185, 24);
-            this.tUniversity.TabIndex = 0;
             // 
             // tYear
             // 
@@ -90,13 +84,6 @@
             this.tReceiptNo.Name = "tReceiptNo";
             this.tReceiptNo.Size = new System.Drawing.Size(185, 24);
             this.tReceiptNo.TabIndex = 5;
-            // 
-            // tOwnerID
-            // 
-            this.tOwnerID.Location = new System.Drawing.Point(179, 322);
-            this.tOwnerID.Name = "tOwnerID";
-            this.tOwnerID.Size = new System.Drawing.Size(185, 24);
-            this.tOwnerID.TabIndex = 6;
             // 
             // lContributionID
             // 
@@ -179,20 +166,23 @@
             this.label9.TabIndex = 15;
             this.label9.Text = "OwnerID";
             // 
-            // Update
+            // UpdateC
             // 
-            this.Update.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.Update.Location = new System.Drawing.Point(429, 419);
-            this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(75, 49);
-            this.Update.TabIndex = 16;
-            this.Update.Text = "Update";
-            this.Update.UseVisualStyleBackColor = false;
-            this.Update.Click += new System.EventHandler(this.Update_Click);
+            this.UpdateC.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.UpdateC.Location = new System.Drawing.Point(429, 419);
+            this.UpdateC.Name = "UpdateC";
+            this.UpdateC.Size = new System.Drawing.Size(75, 49);
+            this.UpdateC.TabIndex = 16;
+            this.UpdateC.Text = "Update";
+            this.UpdateC.UseVisualStyleBackColor = false;
+            this.UpdateC.Click += new System.EventHandler(this.Update_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Update);
+            this.groupBox1.Controls.Add(this.tOwnerID);
+            this.groupBox1.Controls.Add(this.tUniversity);
+            this.groupBox1.Controls.Add(this.Delete);
+            this.groupBox1.Controls.Add(this.UpdateC);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -202,13 +192,11 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.lContributionID);
-            this.groupBox1.Controls.Add(this.tOwnerID);
             this.groupBox1.Controls.Add(this.tReceiptNo);
             this.groupBox1.Controls.Add(this.tAmount);
             this.groupBox1.Controls.Add(this.tSubDate);
             this.groupBox1.Controls.Add(this.tMonth);
             this.groupBox1.Controls.Add(this.tYear);
-            this.groupBox1.Controls.Add(this.tUniversity);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Location = new System.Drawing.Point(30, 19);
@@ -218,6 +206,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Contributions";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Delete
+            // 
+            this.Delete.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.Delete.Location = new System.Drawing.Point(314, 419);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(75, 49);
+            this.Delete.TabIndex = 17;
+            this.Delete.Text = "Delete";
+            this.Delete.UseVisualStyleBackColor = false;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
+            // tUniversity
+            // 
+            this.tUniversity.FormattingEnabled = true;
+            this.tUniversity.Location = new System.Drawing.Point(179, 73);
+            this.tUniversity.Name = "tUniversity";
+            this.tUniversity.Size = new System.Drawing.Size(185, 26);
+            this.tUniversity.TabIndex = 18;
+            // 
+            // tOwnerID
+            // 
+            this.tOwnerID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tOwnerID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tOwnerID.FormattingEnabled = true;
+            this.tOwnerID.Location = new System.Drawing.Point(179, 322);
+            this.tOwnerID.Name = "tOwnerID";
+            this.tOwnerID.Size = new System.Drawing.Size(185, 26);
+            this.tOwnerID.TabIndex = 19;
             // 
             // Edit_Contribution
             // 
@@ -243,15 +260,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button Update;
-        public System.Windows.Forms.TextBox tUniversity;
+        private System.Windows.Forms.Button UpdateC;
         public System.Windows.Forms.TextBox tYear;
         public System.Windows.Forms.TextBox tMonth;
         public System.Windows.Forms.TextBox tSubDate;
         public System.Windows.Forms.TextBox tAmount;
         public System.Windows.Forms.TextBox tReceiptNo;
-        public System.Windows.Forms.TextBox tOwnerID;
         public System.Windows.Forms.Label lContributionID;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button Delete;
+        public System.Windows.Forms.ComboBox tOwnerID;
+        public System.Windows.Forms.ComboBox tUniversity;
     }
 }

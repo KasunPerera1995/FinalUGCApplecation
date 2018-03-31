@@ -20,7 +20,7 @@ namespace PensionScheme
         public DBConnection()
         {
             myAdapter = new MySqlDataAdapter();
-            conn = new MySqlConnection("server = 192.248.15.244; user id = Kasun; database = pen");
+            conn = new MySqlConnection("server = localhost; user id = root; database = pen");
         }
         private MySqlConnection OpenConnection()
         {

@@ -13,6 +13,7 @@ using MySql.Data.MySqlClient;
 using System.Threading;
 
 
+
 namespace PensionScheme
 {
     public partial class MemberAccount : Form 
@@ -45,7 +46,8 @@ namespace PensionScheme
             cb.FillDataGrid(dataGridView2, "Dependent");
             mem.FillComboBoxColumn(ColumnS);
             cb.FillDataGrid(ComplaintGrid, "Complain");
-
+           
+            LoadMyDetails();
             //clock
             timer1.Start();
         }
@@ -90,7 +92,7 @@ namespace PensionScheme
             {   
                 double salary;
                 salary = (Convert.ToDouble(TBasicSalary.Text.ToString())) + (Convert.ToDouble(TAllowances.Text.ToString()));
-                MemberUser mu=new MemberUser(NIC.Text.ToString(),MemName.Text.ToString(),DOB.Value, ServiceStartDate.Value, PensionReg.Value,Convert.ToInt32(Uni.SelectedValue.ToString()),Convert.ToInt32(Post.SelectedValue.ToString()),Academic,salary,Convert.ToInt32(Bank.SelectedValue.ToString()),ActNo.Text.ToString(),Convert.ToDouble(TBasicSalary.Text.ToString()),Convert.ToDouble(TAllowances.Text.ToString()),Email.Text.ToString());
+                MemberUser mu=new MemberUser(NIC.Text.ToString(),MemName.Text.ToString(),DOB.Value, ServiceStartDate.Value, PensionReg.Value,Convert.ToInt32(Uni.SelectedValue.ToString()),Convert.ToInt32(Post.SelectedValue.ToString()),Academic,salary,Convert.ToInt32(Bank.SelectedValue.ToString()),ActNo.Text.ToString(),Convert.ToDouble(TBasicSalary.Text.ToString()),Convert.ToDouble(TAllowances.Text.ToString()),mem.HashCode("password123"),Email.Text.ToString());
                 MemberBUO mbu = new MemberBUO();
 
                 if (mbu.RegisterMember(mu))
@@ -275,6 +277,7 @@ namespace PensionScheme
         {
             dataGridView1.Update();
             cb.FillComboBox(Filter, "Employee", ColumnS.SelectedValue.ToString(), ColumnS.SelectedValue.ToString());
+           MessageBox.Show(mem.HashCode("Kas"));
             //Search();
             //FilterData();
         }
@@ -317,6 +320,38 @@ namespace PensionScheme
             }
         }
 
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void LoadMyDetails() {
+            //MessageBox.Show(Log.LoginName + Log.OperatingEmployee + Log.Type);
+            LoginName.Text = Log.LoginName;
+            MyID.Text = Log.OperatingEmployee;
+            Type.Text = Log.Type;
+            
+
+        }
+
+        private void ChangePass_Click(object sender, EventArgs e)
+        {
+            ChangePassword cp = new ChangePassword();
+            cp.Show();
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

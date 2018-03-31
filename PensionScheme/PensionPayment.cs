@@ -58,7 +58,7 @@ namespace PensionScheme
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pb.WriteData(PensionPeriodSelect.Value);
+            pb.WriteData(PensionPeriodSelect.Value,2);
         }
 
         private void PensionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)

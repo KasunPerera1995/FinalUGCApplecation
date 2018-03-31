@@ -52,6 +52,24 @@ namespace PensionScheme
             this.email = email;
         }
 
+        public MemberUser(string nic, string name, DateTime dob, DateTime serviceStartDate, DateTime pensionSchemeRegisteredDate, int university, int post, bool acadamic, double salary, int bank, string paymentActNo, double basicSalary, double allowances, string password,string email)
+        {
+            this.nic = nic;
+            this.name = name;
+            this.dob = dob;
+            this.serviceStartDate = serviceStartDate;
+            this.pensionSchemeRegisteredDate = pensionSchemeRegisteredDate;
+            this.university = university;
+            this.post = post;
+            this.acadamic = acadamic;
+            this.salary = salary;
+            this.bank = bank;
+            this.paymentActNo = paymentActNo;
+            this.basicSalary = basicSalary;
+            this.allowances = allowances;
+            this.password = password;
+            this.email = email;
+        }
         public MemberUser(string nic, string name, DateTime dob, DateTime serviceStartDate, DateTime pensionSchemeRegisteredDate, int type, int university, int post, bool acadamic, bool systemValidity, int dependentStatus, double totalContribution, double salary, double pension, int bank, string paymentActNo, double basicSalary, double allowances,  string email)
         {
             

@@ -29,9 +29,9 @@ namespace PensionScheme
                 }
 
                 listView1.Items.Clear();
-                
-                DataTable dt=pd.NumberofNotificationsinPeriod(oYr, oMnth, cYr, cMnth);
-                
+
+                DataTable dt = pd.NumberofNotificationsinPeriod(oYr, oMnth, cYr, cMnth);
+
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
@@ -86,7 +86,7 @@ namespace PensionScheme
         public void ArrearOwnerCombo(ComboBox combo) {
             try
             {
-                DataTable ds = com.DefaultSearch("Employee","Type","2","SystemValidity","1");
+                DataTable ds = com.DefaultSearch("Employee", "Type", "2", "SystemValidity", "1");
                 combo.DataSource = ds;
                 combo.DisplayMember = "ID";
                 combo.ValueMember = "ID";
@@ -101,10 +101,10 @@ namespace PensionScheme
         public void PaymentGridFill(DataGridView dg, DateTime date, string type) {
             if (type == "pension")
             {
-               dg.DataSource= com.DefaultSearch("PensionPayment", "PaymentYear", date.Year.ToString(), "PaymentMonth", date.Month.ToString(), "Type", 2);
+                dg.DataSource = com.DefaultSearch("PensionPayment", "PaymentYear", date.Year.ToString(), "PaymentMonth", date.Month.ToString(), "Type", 2);
             }
             else if (type == "lumpsum") {
-              dg.DataSource=  com.DefaultSearch("PensionPayment", "PaymentSubDate", date.ToString("yyyy-MM-dd"),"Type",3);
+                dg.DataSource = com.DefaultSearch("PensionPayment", "PaymentSubDate", date.ToString("yyyy-MM-dd"), "Type", 3);
             }
 
 
@@ -125,7 +125,7 @@ namespace PensionScheme
                 dt.Columns.Add();
 
 
-                dt.Rows.Add(new Object[] { p.OwnerID1,p.PaymentValue1,p.PaymentYear1,p.PaymentMonth1,p.PaymentBank1,p.AccountNo1,p.PaymentSubDate1,p.VoucherNo1,p.Type1 });
+                dt.Rows.Add(new Object[] { p.OwnerID1, p.PaymentValue1, p.PaymentYear1, p.PaymentMonth1, p.PaymentBank1, p.AccountNo1, p.PaymentSubDate1, p.VoucherNo1, p.Type1 });
 
                 return pd.InsertPayment(dt);
 
@@ -154,9 +154,9 @@ namespace PensionScheme
                 return null;
             }
         }
-        public DataTable PenData(DateTime period,DataGridView dg)
+        public DataTable PenData(DateTime period, DataGridView dg)
         {
-           
+
             DataTable dt = new DataTable();
             DataTable ar = new DataTable();
             ar = Arrear(period);
@@ -181,7 +181,7 @@ namespace PensionScheme
                 }
 
             }
-            
+
             dg.DataSource = dt;
             return dt;
         }
@@ -189,7 +189,7 @@ namespace PensionScheme
         {
             try
             {
-                DataTable dt=pd.MaxVoucher();
+                DataTable dt = pd.MaxVoucher();
                 int VoucherNo = Convert.ToInt32(dt.Rows[0][0].ToString()) + 1;
                 return VoucherNo;
             }
@@ -200,7 +200,7 @@ namespace PensionScheme
             }
         }
 
-        public void WriteData(DateTime period)
+        public void WriteData(DateTime period, int type)
         {
 
             try
@@ -218,7 +218,7 @@ namespace PensionScheme
                     string fifth = string.Empty;
                     string sixth = string.Empty;
 
-                    DataTable dt = pd.SlipList(period);
+                    DataTable dt = pd.SlipList(period, type);
                     if (dt.Rows.Count <= 0)
                     {
                         MessageBox.Show("No records for Current Period");
@@ -234,7 +234,7 @@ namespace PensionScheme
                         return;
 
                     }
-                    foreach(DataRow dr in dt.Rows)
+                    foreach (DataRow dr in dt.Rows)
                     {
                         first = dr[0].ToString();
                         second = dr[1].ToString();
@@ -261,7 +261,7 @@ namespace PensionScheme
                         sw.WriteLine(str7);
 
                     }
-                    
+
 
                     MessageBox.Show("success");
                 }
@@ -288,6 +288,21 @@ namespace PensionScheme
                 MessageBox.Show(ee.ToString());
 
             }
+        }
+        public DataTable LumpsumView(DataGridView dg) {
+
+            DataTable dt = pd.LumpSumProView();
+            dg.DataSource = dt;
+            return dt;
+
+
+        }
+
+        public bool InvalidateMember(string id)
+        {
+            return com.defaultUpdate("employee","systemvalidity",false,"id",id);
+
+
         }
     }
 }

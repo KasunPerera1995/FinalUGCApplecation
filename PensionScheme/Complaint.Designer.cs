@@ -78,7 +78,7 @@
             this.Review.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Review.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Review.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Review.Location = new System.Drawing.Point(719, 369);
+            this.Review.Location = new System.Drawing.Point(769, 369);
             this.Review.Name = "Review";
             this.Review.Size = new System.Drawing.Size(82, 48);
             this.Review.TabIndex = 10;
@@ -89,9 +89,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(28, 279);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 18);
+            this.label5.Size = new System.Drawing.Size(72, 16);
             this.label5.TabIndex = 4;
             this.label5.Text = "Reviewed:";
             // 
@@ -124,11 +125,12 @@
             this.Complain.BackColor = System.Drawing.Color.White;
             this.Complain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Complain.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Complain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Complain.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Complain.Location = new System.Drawing.Point(36, 207);
+            this.Complain.Location = new System.Drawing.Point(233, 177);
             this.Complain.MaximumSize = new System.Drawing.Size(800, 60);
             this.Complain.Name = "Complain";
-            this.Complain.Size = new System.Drawing.Size(42, 20);
+            this.Complain.Size = new System.Drawing.Size(38, 18);
             this.Complain.TabIndex = 8;
             this.Complain.Text = "####";
             // 
@@ -147,10 +149,11 @@
             // 
             this.Reviewed.AutoSize = true;
             this.Reviewed.BackColor = System.Drawing.Color.White;
+            this.Reviewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reviewed.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Reviewed.Location = new System.Drawing.Point(231, 279);
+            this.Reviewed.Location = new System.Drawing.Point(237, 279);
             this.Reviewed.Name = "Reviewed";
-            this.Reviewed.Size = new System.Drawing.Size(40, 18);
+            this.Reviewed.Size = new System.Drawing.Size(36, 16);
             this.Reviewed.TabIndex = 9;
             this.Reviewed.Text = "####";
             // 

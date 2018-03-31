@@ -27,8 +27,8 @@ namespace PensionScheme
         public bool InsertMember(DataTable dt) {
             try
             {
-                string query = string.Format("insert into Employee values( @NIC, @MemName,@DOB,@ServiceStartDate,@PensionReg,'1',@Uni,@Post,@Academic,'1',3,'0',@salary,'0',@Bank,@ActNo,@TBasicSalary,@TAllowances,'password123',NULL,@Email)");
-                MySqlParameter[] mySqlParameter = new MySqlParameter[14];
+                string query = string.Format("insert into Employee values( @NIC, @MemName,@DOB,@ServiceStartDate,@PensionReg,'1',@Uni,@Post,@Academic,'1',3,'0',@salary,'0',@Bank,@ActNo,@TBasicSalary,@TAllowances,@password,NULL,@Email)");
+                MySqlParameter[] mySqlParameter = new MySqlParameter[15];
                 mySqlParameter[0] = new MySqlParameter("@NIC", dt.Rows[0][0].ToString());
                 mySqlParameter[1] = new MySqlParameter("@MemName", dt.Rows[0][1].ToString());
                 mySqlParameter[2] = new MySqlParameter("@DOB", (Convert.ToDateTime(dt.Rows[0][2].ToString())).ToString("yyyy-MM-dd"));
@@ -42,8 +42,9 @@ namespace PensionScheme
                 mySqlParameter[10] = new MySqlParameter("@ActNo", dt.Rows[0][10].ToString());
                 mySqlParameter[11] = new MySqlParameter("@TBasicSalary", dt.Rows[0][11].ToString());
                 mySqlParameter[12] = new MySqlParameter("@TAllowances", dt.Rows[0][12].ToString());
-                mySqlParameter[13] = new MySqlParameter("@Email", MySqlDbType.VarChar);
-                mySqlParameter[13].Value = dt.Rows[0][13].ToString();
+                mySqlParameter[13] = new MySqlParameter("@password", dt.Rows[0][13].ToString());
+                mySqlParameter[14] = new MySqlParameter("@Email", MySqlDbType.VarChar);
+                mySqlParameter[14].Value = dt.Rows[0][14].ToString();
 
                 return conn.ExecuteInsertQuery(query,mySqlParameter);
 
@@ -73,7 +74,7 @@ namespace PensionScheme
             MySqlParameter[] mySqlParameters = new MySqlParameter[0];
             return conn.executeSelectQuery(query, mySqlParameters);
         }
-
+      
         public bool InsertDependent(DataTable dt)
         {
             try
@@ -177,13 +178,57 @@ namespace PensionScheme
                 mySqlParameter[2] = new MySqlParameter("@DType", dt.Rows[0][2].ToString());
                 mySqlParameter[3] = new MySqlParameter("@REID", dt.Rows[0][3].ToString());
                 mySqlParameter[4] = new MySqlParameter("@DAge", dt.Rows[0][4].ToString());
-                return conn.ExecuteInsertQuery(query, mySqlParameter);
+                return conn.ExecuteUpdateQuery(query, mySqlParameter);
             }
             catch (Exception ee)
             {
                 MessageBox.Show(ee.ToString());
                 return false;
             }
+        }
+        public bool UpdateAdmin(DataTable dt)
+        {
+            try
+            {
+                string query = String.Format("update Admin set OperatingEmployeeID=@NIC,LoginName=@LoginName,AccountType=@AType where AdminID=@AID");
+                MySqlParameter[] mySqlParameter = new MySqlParameter[4];
+                mySqlParameter[0] = new MySqlParameter("@NIC", dt.Rows[0][0].ToString());
+                mySqlParameter[1] = new MySqlParameter("@LoginName", dt.Rows[0][1].ToString());
+                mySqlParameter[2] = new MySqlParameter("@AType", dt.Rows[0][2].ToString());
+                mySqlParameter[3] = new MySqlParameter("@AID", dt.Rows[0][3].ToString());
+               
+                return conn.ExecuteUpdateQuery(query, mySqlParameter);
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.ToString());
+                return false;
+            }
+        }
+
+        public bool InsertAdmin(DataTable dt)
+        {
+            try
+            {
+                string query = string.Format("insert into Admin(`OperatingEmployeeID`, `LoginName`, `AccountType`, `AdminPassword`) values( @EmpNIC, @LoginName,@Type,@Password)");
+                MySqlParameter[] mySqlParameter = new MySqlParameter[4];
+                mySqlParameter[0] = new MySqlParameter("@EmpNIC", dt.Rows[0][0].ToString());
+                mySqlParameter[1] = new MySqlParameter("@LoginName", dt.Rows[0][1].ToString());
+                mySqlParameter[2] = new MySqlParameter("@Type", dt.Rows[0][2].ToString());
+                mySqlParameter[3] = new MySqlParameter("@Password", dt.Rows[0][3].ToString());
+               
+                return conn.ExecuteInsertQuery(query, mySqlParameter);
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+
+
         }
     }
 }

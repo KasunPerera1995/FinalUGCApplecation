@@ -40,5 +40,16 @@ namespace PensionScheme
 
     }
 
-}
+        public ContributionVO(int contributionID, int university, int year, int month, DateTime subDate, double amount, string receiptNo, string ownerID)
+        {
+            ContributionID = contributionID;
+            University = university;
+            Year = year;
+            Month = month;
+            SubDate = subDate;
+            Amount = amount;
+            ReceiptNo = receiptNo;
+            OwnerID = ownerID;
+        }
+    }
 }

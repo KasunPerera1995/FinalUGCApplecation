@@ -96,10 +96,18 @@ namespace PensionScheme
                 MySqlConnection c1 = new MySqlConnection(@DBStr.connectionString);
                 DataTable dt = new DataTable();
 
+                MySqlDataAdapter t1 = new MySqlDataAdapter("select ID,Pension,Bank,PaymentActNo,Type,DependentName,DependentID,DependentType from Employee,Dependent where Type='2' AND SystemValidity='0' AND DependentStatus='1' AND RelatedEmployeeID=ID", c1);
+                MySqlDataAdapter t2 = new MySqlDataAdapter("select ID,Count(DependentID) as Number from Employee,Dependent where Type='2' AND SystemValidity='0' AND DependentStatus='2' AND RelatedEmployeeID=ID group by ID", c1);
+                DataTable d1 = new DataTable();
+                DataTable d2 = new DataTable();
+                t1.Fill(d1);
+                t2.Fill(d2);
+
                 MySqlDataAdapter sa = new MySqlDataAdapter("select ID,Pension,Bank,PaymentActNo,Type,DependentName,DependentID,DependentType from Employee,Dependent where Type='2' AND SystemValidity='0' AND DependentStatus<3 AND RelatedEmployeeID=ID", c1);
                 sa.Fill(dt);
                 dt.Columns.Add("Actual Payment", System.Type.GetType("System.Double"));
-
+                DataRow[] filter;
+                int x;
                 foreach (DataRow row in dt.Rows)
                 {
 
@@ -109,8 +117,13 @@ namespace PensionScheme
                         row[8] = Convert.ToDouble((Convert.ToInt32(row[1])) * 0.75);
                     }
                     else
-                        row[8] = Convert.ToDouble((Convert.ToInt32(row[1])) * 0.50);
-
+                    {
+                        filter =d2.Select("ID LIKE '%" + row[0].ToString()+"%'");
+                        x = Convert.ToInt32(filter[0][1].ToString());
+                        
+                        row[8] = Convert.ToDouble((Convert.ToInt32(row[1])) * 0.75/x);
+                        //MessageBox.Show(row[8].ToString());
+                    }
 
 
                 }
@@ -121,7 +134,7 @@ namespace PensionScheme
             }
             catch (Exception ee)
             {
-                MessageBox.Show("Invalid Entry");
+                MessageBox.Show(ee.ToString());
 
             }
 

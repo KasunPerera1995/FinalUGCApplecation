@@ -59,6 +59,7 @@
             this.LoginName = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ProCB = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Remain)).BeginInit();
@@ -80,6 +81,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Teal;
+            this.tabPage1.Controls.Add(this.ProCB);
             this.tabPage1.Controls.Add(this.InsertC);
             this.tabPage1.Controls.Add(this.Time);
             this.tabPage1.Controls.Add(this.progressBar1);
@@ -391,6 +393,19 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // ProCB
+            // 
+            this.ProCB.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.ProCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProCB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ProCB.Location = new System.Drawing.Point(878, 333);
+            this.ProCB.Name = "ProCB";
+            this.ProCB.Size = new System.Drawing.Size(152, 54);
+            this.ProCB.TabIndex = 26;
+            this.ProCB.Text = "Process Closing Balances";
+            this.ProCB.UseVisualStyleBackColor = false;
+            this.ProCB.Click += new System.EventHandler(this.ProCB_Click);
+            // 
             // Contribution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,5 +460,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label LoginName;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button ProCB;
     }
 }

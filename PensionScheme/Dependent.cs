@@ -37,7 +37,7 @@ namespace PensionScheme
         public void UpdateDependent() {
             try
             {
-                DependentUser dp = new DependentUser(TDID.Text.ToString(), TDName.Text.ToString(), Convert.ToInt32(CDType.SelectedValue.ToString()), TDREID.Text.ToString(), Convert.ToInt32(TDAge.Text.ToString()));
+                DependentUser dp = new DependentUser(TDID.Text.ToString(), TDName.Text.ToString(), Convert.ToInt32(CDType.SelectedValue.ToString()), TDREID.Text.ToString(), TDOB.Value,Convert.ToBoolean(Validity.SelectedItem.ToString()));
                 if (mem.UpdateDependent(dp))
                     MessageBox.Show("Update Successful");
                 else

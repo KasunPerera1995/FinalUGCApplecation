@@ -76,7 +76,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.DType = new System.Windows.Forms.ComboBox();
             this.Submit = new System.Windows.Forms.Button();
-            this.TDAge = new System.Windows.Forms.TextBox();
             this.TDID = new System.Windows.Forms.TextBox();
             this.TDName = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -99,6 +98,7 @@
             this.LoginName = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.TDOB = new System.Windows.Forms.DateTimePicker();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -562,12 +562,12 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Teal;
+            this.tabPage3.Controls.Add(this.TDOB);
             this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.CEID);
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Controls.Add(this.DType);
             this.tabPage3.Controls.Add(this.Submit);
-            this.tabPage3.Controls.Add(this.TDAge);
             this.tabPage3.Controls.Add(this.TDID);
             this.tabPage3.Controls.Add(this.TDName);
             this.tabPage3.Controls.Add(this.label19);
@@ -609,9 +609,9 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(42, 406);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(82, 13);
+            this.label21.Size = new System.Drawing.Size(66, 13);
             this.label21.TabIndex = 16;
-            this.label21.Text = "Dependent Age";
+            this.label21.Text = "Date of Birth";
             // 
             // DType
             // 
@@ -630,13 +630,6 @@
             this.Submit.Text = "Submit";
             this.Submit.UseVisualStyleBackColor = true;
             this.Submit.Click += new System.EventHandler(this.Submit_Click);
-            // 
-            // TDAge
-            // 
-            this.TDAge.Location = new System.Drawing.Point(233, 403);
-            this.TDAge.Name = "TDAge";
-            this.TDAge.Size = new System.Drawing.Size(100, 20);
-            this.TDAge.TabIndex = 5;
             // 
             // TDID
             // 
@@ -865,6 +858,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // TDOB
+            // 
+            this.TDOB.CustomFormat = "yyyy-MM-dd";
+            this.TDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.TDOB.Location = new System.Drawing.Point(233, 402);
+            this.TDOB.Name = "TDOB";
+            this.TDOB.Size = new System.Drawing.Size(109, 20);
+            this.TDOB.TabIndex = 19;
+            // 
             // MemberAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -938,7 +940,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox DType;
         private System.Windows.Forms.Button Submit;
-        private System.Windows.Forms.TextBox TDAge;
         private System.Windows.Forms.TextBox TDID;
         private System.Windows.Forms.TextBox TDName;
         private System.Windows.Forms.Label label19;
@@ -966,5 +967,6 @@
         private System.Windows.Forms.Button ChangePass;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label Type;
+        private System.Windows.Forms.DateTimePicker TDOB;
     }
 }

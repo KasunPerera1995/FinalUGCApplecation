@@ -120,5 +120,20 @@ namespace PensionScheme
             }
 
         }
+
+        public bool InsertYearEndBal(int year,string ownerid,double ob,double orate,double ya,double yrate,double cb,double nm) {
+
+            string query = String.Format("INSERT INTO `yearendconbal`(`Year`, `OpeningBal`, `OBInterestRate`, `YearAddition`, `YAInterestRate`, `ClosingBal`, `EmployeeID`, `NoOfMonths`) values(@year, @ob, @orate, @ya, @yrate, @cb, @ownerid, @nm)");
+            MySqlParameter[] mySqlParameters = new MySqlParameter[8];
+            mySqlParameters[0] = new MySqlParameter("@ownerid", ownerid);
+            mySqlParameters[1] = new MySqlParameter("@ob", ob.ToString());
+            mySqlParameters[2] = new MySqlParameter("@orate", orate.ToString());
+            mySqlParameters[3] = new MySqlParameter("@ya", ya.ToString());
+            mySqlParameters[4] = new MySqlParameter("@yrate", yrate.ToString());
+            mySqlParameters[5] = new MySqlParameter("@cb", cb.ToString());
+            mySqlParameters[6] = new MySqlParameter("@nm", nm.ToString());
+            mySqlParameters[7] = new MySqlParameter("@year", year.ToString());
+            return conn.ExecuteInsertQuery(query, mySqlParameters);
+        }
     }
 }

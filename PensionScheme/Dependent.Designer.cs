@@ -37,7 +37,6 @@
             this.TDID = new System.Windows.Forms.TextBox();
             this.TDName = new System.Windows.Forms.TextBox();
             this.TDREID = new System.Windows.Forms.TextBox();
-            this.TDAge = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.Update = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -47,6 +46,9 @@
             this.pensionSchemeAllTablesBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dependentTypeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.pensionSchemeAllTablesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.TDOB = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Validity = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dependentTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pensionSchemeAllTablesBindingSource2)).BeginInit();
@@ -105,9 +107,9 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(7, 219);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 18);
+            this.label5.Size = new System.Drawing.Size(90, 18);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Dependent Age";
+            this.label5.Text = "Date of Birth";
             // 
             // TDID
             // 
@@ -130,13 +132,6 @@
             this.TDREID.Size = new System.Drawing.Size(229, 20);
             this.TDREID.TabIndex = 7;
             this.TDREID.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TDREID_MouseClick);
-            // 
-            // TDAge
-            // 
-            this.TDAge.Location = new System.Drawing.Point(200, 220);
-            this.TDAge.Name = "TDAge";
-            this.TDAge.Size = new System.Drawing.Size(229, 20);
-            this.TDAge.TabIndex = 8;
             // 
             // label6
             // 
@@ -177,11 +172,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Validity);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.TDOB);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.Update);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.CDType);
-            this.groupBox1.Controls.Add(this.TDAge);
             this.groupBox1.Controls.Add(this.TDREID);
             this.groupBox1.Controls.Add(this.TDName);
             this.groupBox1.Controls.Add(this.TDID);
@@ -209,6 +206,37 @@
             // dependentTypeBindingSource
             // 
             this.dependentTypeBindingSource.DataSource = this.pensionSchemeAllTablesBindingSource2;
+            // 
+            // TDOB
+            // 
+            this.TDOB.CustomFormat = "yyyy-MM-dd";
+            this.TDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.TDOB.Location = new System.Drawing.Point(200, 219);
+            this.TDOB.Name = "TDOB";
+            this.TDOB.Size = new System.Drawing.Size(229, 20);
+            this.TDOB.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.Location = new System.Drawing.Point(7, 263);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 18);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Validity";
+            // 
+            // Validity
+            // 
+            this.Validity.FormattingEnabled = true;
+            this.Validity.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.Validity.Location = new System.Drawing.Point(200, 260);
+            this.Validity.Name = "Validity";
+            this.Validity.Size = new System.Drawing.Size(121, 21);
+            this.Validity.TabIndex = 15;
             // 
             // Dependent
             // 
@@ -241,7 +269,6 @@
         public System.Windows.Forms.TextBox TDID;
         public System.Windows.Forms.TextBox TDName;
         public System.Windows.Forms.TextBox TDREID;
-        public System.Windows.Forms.TextBox TDAge;
         private System.Windows.Forms.Button Update;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -251,5 +278,8 @@
         private System.Windows.Forms.BindingSource dependentTypeBindingSource1;
       //  private PensionSchemeAllTablesTableAdapters.DependentTypeTableAdapter dependentTypeTableAdapter;
         private System.Windows.Forms.BindingSource pensionSchemeAllTablesBindingSource1;
+        public System.Windows.Forms.DateTimePicker TDOB;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.ComboBox Validity;
     }
 }

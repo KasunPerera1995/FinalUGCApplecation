@@ -115,9 +115,10 @@ namespace PensionScheme
                 dt.Columns.Add();
                 dt.Columns.Add();
                 dt.Columns.Add();
+                
 
 
-                dt.Rows.Add(new Object[] { d.Id, d.Name, d.Type, d.RelatedEmployee, d.Age });
+                dt.Rows.Add(new Object[] { d.Id, d.Name, d.Type, d.RelatedEmployee, d.DOB1 });
 
                 return mem.InsertDependent(dt);
 
@@ -208,7 +209,8 @@ namespace PensionScheme
                 de.TDName.Text = du.Name;
 
                 de.TDREID.Text = du.RelatedEmployee;
-                de.TDAge.Text = du.Age.ToString();
+                de.TDOB.Value = du.DOB1;
+                de.Validity.SelectedItem = du.Status.ToString();
                 de.Show();
                 de.TypeSelect();
 
@@ -380,16 +382,11 @@ namespace PensionScheme
                 //MessageBox.Show("Latency is "+latency.ToString()+" Rate is " + rate.ToString() + " Addition is " + Addition.ToString());
 
 
-                if (type == 2)
-                {
+               
                     Addition = totalcontribution * latency * r.Rate1 / 365;
                     Addition = Math.Round(Addition, 2);
-                }
-                else
-                {
-                    Addition = 0;
-                    Addition = Math.Round(Addition, 2);
-                }
+               
+               
 
                 PensionerUser pu = new PensionerUser();
                 double FinalReserve = totalcontribution + Addition;
@@ -455,8 +452,9 @@ namespace PensionScheme
                 dt.Columns.Add();
                 dt.Columns.Add();
                 dt.Columns.Add();
+                dt.Columns.Add();
 
-                dt.Rows.Add(new object[] { du.Id, du.Name, du.Type, du.RelatedEmployee, du.Age });
+                dt.Rows.Add(new object[] { du.Id, du.Name, du.Type, du.RelatedEmployee, du.DOB1,du.Status });
                 return mem.UpdateDependent(dt);
             }
             catch(Exception ee) {

@@ -79,13 +79,13 @@ namespace PensionScheme
         {
             try
             {
-                string query = string.Format("insert into Dependent(`DependentID`, `DependentName`, `DependentType`, `RelatedEmployeeID`, `DependentAge`) values( @ID, @DepName,@DType,@REID,@Age)");
+                string query = string.Format("insert into Dependent(`DependentID`, `DependentName`, `DependentType`, `RelatedEmployeeID`, `DateOFBirth`) values( @ID, @DepName,@DType,@REID,@DOB)");
                 MySqlParameter[] mySqlParameter = new MySqlParameter[5];
                 mySqlParameter[0] = new MySqlParameter("@ID", dt.Rows[0][0].ToString());
                 mySqlParameter[1] = new MySqlParameter("@DepName", dt.Rows[0][1].ToString());
                 mySqlParameter[2] = new MySqlParameter("@DType", dt.Rows[0][2].ToString());
                 mySqlParameter[3] = new MySqlParameter("@REID", dt.Rows[0][3].ToString());
-                mySqlParameter[4] = new MySqlParameter("@Age", dt.Rows[0][4].ToString());
+                mySqlParameter[4] = new MySqlParameter("@DOB", (Convert.ToDateTime(dt.Rows[0][4].ToString())).ToString("yyyy-MM-dd"));
                 return conn.ExecuteInsertQuery(query, mySqlParameter);
                 
                 
@@ -171,13 +171,15 @@ namespace PensionScheme
         public bool UpdateDependent(DataTable dt) {
             try
             {
-                string query = String.Format("update Dependent set DependentID=@DepID,DependentName=@DepName,DependentType=@DType,RelatedEmployeeID=@REID,DependentAge=@DAge where RelatedEmployeeID=@REID");
-                MySqlParameter[] mySqlParameter = new MySqlParameter[5];
+                string query = String.Format("update Dependent set DependentID=@DepID,DependentName=@DepName,DependentType=@DType,RelatedEmployeeID=@REID,DateOfBirth=@DOB,Status=@Validity where RelatedEmployeeID=@REID");
+                MySqlParameter[] mySqlParameter = new MySqlParameter[6];
                 mySqlParameter[0] = new MySqlParameter("@DepID", dt.Rows[0][0].ToString());
                 mySqlParameter[1] = new MySqlParameter("@DepName", dt.Rows[0][1].ToString());
                 mySqlParameter[2] = new MySqlParameter("@DType", dt.Rows[0][2].ToString());
                 mySqlParameter[3] = new MySqlParameter("@REID", dt.Rows[0][3].ToString());
-                mySqlParameter[4] = new MySqlParameter("@DAge", dt.Rows[0][4].ToString());
+               
+                mySqlParameter[4] = new MySqlParameter("@DOB", (Convert.ToDateTime(dt.Rows[0][4].ToString())).ToString("yyyy-MM-dd"));
+                mySqlParameter[5] = new MySqlParameter("@Validity", Convert.ToBoolean(dt.Rows[0][5].ToString()));
                 return conn.ExecuteUpdateQuery(query, mySqlParameter);
             }
             catch (Exception ee)

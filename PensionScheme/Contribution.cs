@@ -201,6 +201,7 @@ namespace PensionScheme
             cb.DisplayRemain(Remain);
             Available();
             progressBar1.Value = 0;
+            cb.CalSubBal(2018, 0.5, 0.2);
             MessageBox.Show("Refreshed");
         }
 
@@ -293,6 +294,12 @@ namespace PensionScheme
             Text = Log.Type;
 
 
+        }
+
+        private void ProCB_Click(object sender, EventArgs e)
+        {
+            YearEndConBalancePro pcb = new YearEndConBalancePro();
+            pcb.Show();
         }
     }
 }

@@ -109,7 +109,7 @@ namespace PensionScheme
         }
         public DataTable LumpSumProView()
         {
-            string query = String.Format("select ID, Name, TotalContribution, Bank, PaymentActNo, Type from Employee where Type = '3' AND SystemValidity = '1'");
+            string query = String.Format("select ID, Name, FinalReserve, Bank, PaymentActNo, Type from Employee,Pensioner where Type = '3' AND SystemValidity = '1' AND ID=EmployeID");
             MySqlParameter[] mySqlParameters = new MySqlParameter[0];
             return conn.executeSelectQuery(query, mySqlParameters);
         }

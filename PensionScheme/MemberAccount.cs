@@ -186,7 +186,7 @@ namespace PensionScheme
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            DependentUser dp = new DependentUser(TDID.Text.ToString() ,TDName.Text.ToString(),Convert.ToInt32(DType.SelectedValue.ToString()),CEID.SelectedValue.ToString(),Convert.ToInt32(TDAge.Text.ToString()));
+            DependentUser dp = new DependentUser(TDID.Text.ToString() ,TDName.Text.ToString(),Convert.ToInt32(DType.SelectedValue.ToString()),CEID.SelectedValue.ToString(),TDOB.Value);
             if (mem.RegisterDependent(dp))
                 MessageBox.Show("Update Successful");
             else
@@ -194,7 +194,7 @@ namespace PensionScheme
             dataGridView2.Refresh();
             TDID.Clear();
             TDName.Clear();
-            TDAge.Clear();
+            //TDOB.Clear();
 
             cb.FillDataGrid(dataGridView2, "Dependent");
             //ViewDependent();
@@ -284,17 +284,23 @@ namespace PensionScheme
 
         private void MemberAccount_FormClosed(object sender, FormClosedEventArgs e)
         {
-            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            try
             {
-                if (Application.OpenForms[i].Name != "Form1")
+                for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
                 {
+                    if (Application.OpenForms[i].Name != "Form1")
+                    {
 
-                    Application.OpenForms[i].Close();
+                        Application.OpenForms[i].Close();
+                    }
+                    else
+                    {
+                        Application.OpenForms[i].Show();
+                    }
                 }
-                else
-                {
-                    Application.OpenForms[i].Show();
-                }
+            }
+            catch (Exception ee) {
+
             }
         }
 

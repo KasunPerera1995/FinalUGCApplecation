@@ -172,6 +172,64 @@ namespace PensionScheme
             return com.DefaultDelete("ContributionPen", "ContributionID", identifier);
 
         }
+
+        public bool CalSubBal(int year,double orate,double yrate) {
+            bool re=true;
+            bool it;
+            try {
+
+                DataTable dt = com.DefaultSearch("Employee", "Type", "1");
+                
+                foreach (DataRow dr in dt.Rows) {
+                    string id = dr[0].ToString();
+                    int prev = year - 1;
+                    MessageBox.Show(prev.ToString()); 
+                    DataTable obd = com.DefaultSearch("YearEndConBal", "Year", prev.ToString(), "EmployeeID", id);
+                    DataTable yad = com.DefaultSearch("YearBalances", "OwnerID", id, "Year", year.ToString());
+
+                    //MessageBox.Show(year.ToString()+"   "+id.ToString()+"      "+yad.Rows.Count.ToString()+"    "+obd.Rows.Count.ToString());
+                    
+
+                    double ob;
+                    double ya;
+                    int nm;
+
+                    if (obd.Rows.Count > 0)
+                        ob = Convert.ToDouble(obd.Rows[0][0].ToString());
+                    else
+                        ob = 0;
+
+                    if (yad.Rows.Count > 0)
+                    {
+                       // MessageBox.Show(yad.Rows[0][2].ToString());
+                        ya = Convert.ToDouble(yad.Rows[0][2].ToString());
+                        nm = Convert.ToInt32(yad.Rows[0][3].ToString());
+                    }
+                    else {
+                        ya = 0;
+                        nm = 0;
+                    }
+
+                    double cb = ob + ya + ob * orate + ya * yrate;
+                    //MessageBox.Show(cb.ToString()+"                  "+ob.ToString()+"            "+nm.ToString());
+                    
+                   
+                   it= cd.InsertYearEndBal(year,id,ob,orate,ya,yrate,cb,nm);
+                    re = re && it;
+                }
+                return re;
+
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.ToString());
+                return false;
+
+            }
+
+        }
+    
+        
     }
 }
  

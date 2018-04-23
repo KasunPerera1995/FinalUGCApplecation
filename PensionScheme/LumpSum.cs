@@ -63,18 +63,20 @@ namespace PensionScheme
                 int progress = 0;
                 int length = dt.Rows.Count;
 
-                pb.CalVoucherNo();
+                //pb.CalVoucherNo();
 
 
 
                 MessageBox.Show("Start Process");
                 //PaymentVO pv = new PaymentVO(dt.Rows[n][0].ToString(),Convert.ToDouble(dt.Rows[n][2].ToString()),0,Convert.ToInt32(DateTime.Now.Month), Convert.ToInt32(DateTime.Now.Year.ToString()),Convert.ToInt32(dt.Rows[n][3].ToString()),dt.Rows[n][4].ToString(),DateTime.Now,Convert.ToInt32(VoucherNo.ToString()),3);
                 MySqlConnection conn = new MySqlConnection(@DBStr.connectionString);
-               // MessageBox.Show("Conneted");
-
+                // MessageBox.Show("Conneted");
+                int VoucherNo;
+                VoucherNo = pb.CalVoucherNo();
                 for (int n = 0; n < length; n++)
                 {
-                    PaymentVO pp = new PaymentVO(dt.Rows[n][0].ToString(), Convert.ToDouble(dt.Rows[n][2].ToString()), false, Convert.ToInt32(DateTime.Now.Month), Convert.ToInt32(DateTime.Now.Year.ToString()), Convert.ToInt32(dt.Rows[n][3].ToString()), dt.Rows[n][4].ToString(), DateTime.Now, Convert.ToInt32(VoucherNo.ToString()), 3);
+                    
+                    PaymentVO pp = new PaymentVO(dt.Rows[n][0].ToString(), Convert.ToDouble(dt.Rows[n][2].ToString()), false, Convert.ToInt32(DateTime.Now.Month), Convert.ToInt32(DateTime.Now.Year.ToString()), Convert.ToInt32(dt.Rows[n][3].ToString()), dt.Rows[n][4].ToString(), DateTime.Now,VoucherNo, 3);
 
 
                     if (pb.InsertPayment(pp) && pb.InvalidateMember(dt.Rows[n][0].ToString()))
